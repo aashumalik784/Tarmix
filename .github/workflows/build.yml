@@ -17,7 +17,7 @@ jobs:
         java-version: '17'
     - uses: android-actions/setup-android@v3
     - run: chmod +x gradlew
-    - run:./gradlew assembleRelease
+    - run: ./gradlew assembleRelease
     - run: mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/Tremix-v0.118.0.apk
     - uses: softprops/action-gh-release@v2
       with:
