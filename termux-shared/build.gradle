@@ -8,6 +8,7 @@ android {
     ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
 
     dependencies {
+    implementation project(':termux-am')
         implementation "androidx.appcompat:appcompat:1.6.1"
         implementation "androidx.annotation:annotation:1.9.0"
         implementation "androidx.core:core:1.13.1"
@@ -28,7 +29,6 @@ android {
 
         implementation project(":terminal-view")
 
-        implementation "com.tremix:termux-am-library:v2.0.0"
     }
 
     defaultConfig {
@@ -74,6 +74,7 @@ android {
 }
 
 dependencies {
+    implementation project(':termux-am')
     testImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test.ext:junit:1.1.5"
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
