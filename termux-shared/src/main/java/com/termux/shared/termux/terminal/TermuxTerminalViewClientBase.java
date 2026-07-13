@@ -1,15 +1,15 @@
-package com.termux.shared.termux.terminal;
+package com.termix.shared.termux.terminal;
 
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-import com.termux.shared.logger.Logger;
-import com.termux.terminal.TerminalSession;
-import com.termux.view.TerminalViewClient;
+import com.termix.shared.logger.Logger;
+import com.termix.terminal.TerminalSession;
+import com.termix.view.TerminalViewClient;
 
-public class TermuxTerminalViewClientBase implements TerminalViewClient {
+public class TremixTerminalViewClientBase implements TerminalViewClient {
 
-    public TermuxTerminalViewClientBase() {
+    public TremixTerminalViewClientBase() {
     }
 
     @Override

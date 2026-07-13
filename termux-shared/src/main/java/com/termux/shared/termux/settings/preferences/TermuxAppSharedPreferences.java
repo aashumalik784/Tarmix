@@ -1,4 +1,4 @@
-package com.termux.shared.termux.settings.preferences;
+package com.termix.shared.termux.settings.preferences;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -6,64 +6,64 @@ import android.util.TypedValue;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.settings.preferences.AppSharedPreferences;
-import com.termux.shared.settings.preferences.SharedPreferenceUtils;
-import com.termux.shared.termux.TermuxConstants;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.termux.TermuxUtils;
-import com.termux.shared.termux.settings.preferences.TermuxPreferenceConstants.TERMUX_APP;
+import com.termix.shared.android.PackageUtils;
+import com.termix.shared.settings.preferences.AppSharedPreferences;
+import com.termix.shared.settings.preferences.SharedPreferenceUtils;
+import com.termix.shared.termux.TremixConstants;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.data.DataUtils;
+import com.termix.shared.termux.TremixUtils;
+import com.termix.shared.termux.settings.preferences.TremixPreferenceConstants.TERMUX_APP;
 
-public class TermuxAppSharedPreferences extends AppSharedPreferences {
+public class TremixAppSharedPreferences extends AppSharedPreferences {
 
     private int MIN_FONTSIZE;
     private int MAX_FONTSIZE;
     private int DEFAULT_FONTSIZE;
 
-    private static final String LOG_TAG = "TermuxAppSharedPreferences";
+    private static final String LOG_TAG = "TremixAppSharedPreferences";
 
-    private TermuxAppSharedPreferences(@NonNull Context context) {
+    private TremixAppSharedPreferences(@NonNull Context context) {
         super(context,
             SharedPreferenceUtils.getPrivateSharedPreferences(context,
-                TermuxConstants.TERMUX_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION),
+                TremixConstants.TERMUX_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION),
             SharedPreferenceUtils.getPrivateAndMultiProcessSharedPreferences(context,
-                TermuxConstants.TERMUX_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION));
+                TremixConstants.TERMUX_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION));
 
         setFontVariables(context);
     }
 
     /**
-     * Get {@link TermuxAppSharedPreferences}.
+     * Get {@link TremixAppSharedPreferences}.
      *
      * @param context The {@link Context} to use to get the {@link Context} of the
-     *                {@link TermuxConstants#TERMUX_PACKAGE_NAME}.
-     * @return Returns the {@link TermuxAppSharedPreferences}. This will {@code null} if an exception is raised.
+     *                {@link TremixConstants#TERMUX_PACKAGE_NAME}.
+     * @return Returns the {@link TremixAppSharedPreferences}. This will {@code null} if an exception is raised.
      */
     @Nullable
-    public static TermuxAppSharedPreferences build(@NonNull final Context context) {
-        Context termuxPackageContext = PackageUtils.getContextForPackage(context, TermuxConstants.TERMUX_PACKAGE_NAME);
+    public static TremixAppSharedPreferences build(@NonNull final Context context) {
+        Context termuxPackageContext = PackageUtils.getContextForPackage(context, TremixConstants.TERMUX_PACKAGE_NAME);
         if (termuxPackageContext == null)
             return null;
         else
-            return new TermuxAppSharedPreferences(termuxPackageContext);
+            return new TremixAppSharedPreferences(termuxPackageContext);
     }
 
     /**
-     * Get {@link TermuxAppSharedPreferences}.
+     * Get {@link TremixAppSharedPreferences}.
      *
      * @param context The {@link Context} to use to get the {@link Context} of the
-     *                {@link TermuxConstants#TERMUX_PACKAGE_NAME}.
+     *                {@link TremixConstants#TERMUX_PACKAGE_NAME}.
      * @param exitAppOnError If {@code true} and failed to get package context, then a dialog will
      *                       be shown which when dismissed will exit the app.
-     * @return Returns the {@link TermuxAppSharedPreferences}. This will {@code null} if an exception is raised.
+     * @return Returns the {@link TremixAppSharedPreferences}. This will {@code null} if an exception is raised.
      */
-    public static TermuxAppSharedPreferences build(@NonNull final Context context, final boolean exitAppOnError) {
-        Context termuxPackageContext = TermuxUtils.getContextForPackageOrExitApp(context, TermuxConstants.TERMUX_PACKAGE_NAME, exitAppOnError);
+    public static TremixAppSharedPreferences build(@NonNull final Context context, final boolean exitAppOnError) {
+        Context termuxPackageContext = TremixUtils.getContextForPackageOrExitApp(context, TremixConstants.TERMUX_PACKAGE_NAME, exitAppOnError);
         if (termuxPackageContext == null)
             return null;
         else
-            return new TermuxAppSharedPreferences(termuxPackageContext);
+            return new TremixAppSharedPreferences(termuxPackageContext);
     }
 
 

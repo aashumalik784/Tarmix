@@ -1,4 +1,4 @@
-package com.termux.shared.termux.extrakeys;
+package com.termix.shared.termux.extrakeys;
 
 import androidx.annotation.NonNull;
 

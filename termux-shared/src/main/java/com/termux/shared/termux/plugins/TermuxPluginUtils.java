@@ -1,4 +1,4 @@
-package com.termux.shared.termux.plugins;
+package com.termix.shared.termux.plugins;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -10,36 +10,36 @@ import android.os.Environment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.R;
-import com.termux.shared.activities.ReportActivity;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.termux.file.TermuxFileUtils;
-import com.termux.shared.shell.command.result.ResultConfig;
-import com.termux.shared.shell.command.result.ResultData;
-import com.termux.shared.errors.Errno;
-import com.termux.shared.errors.Error;
-import com.termux.shared.notification.NotificationUtils;
-import com.termux.shared.termux.models.UserAction;
-import com.termux.shared.termux.notification.TermuxNotificationUtils;
-import com.termux.shared.termux.settings.preferences.TermuxPreferenceConstants;
-import com.termux.shared.shell.command.result.ResultSender;
-import com.termux.shared.shell.ShellUtils;
-import com.termux.shared.android.AndroidUtils;
-import com.termux.shared.termux.TermuxConstants;
-import com.termux.shared.termux.TermuxConstants.TERMUX_APP.TERMUX_SERVICE;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
-import com.termux.shared.termux.settings.preferences.TermuxPreferenceConstants.TERMUX_APP;
-import com.termux.shared.models.ReportInfo;
-import com.termux.shared.termux.settings.properties.TermuxAppSharedProperties;
-import com.termux.shared.shell.command.ExecutionCommand;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.markdown.MarkdownUtils;
-import com.termux.shared.termux.TermuxUtils;
+import com.termix.shared.R;
+import com.termix.shared.activities.ReportActivity;
+import com.termix.shared.file.FileUtils;
+import com.termix.shared.termux.file.TremixFileUtils;
+import com.termix.shared.shell.command.result.ResultConfig;
+import com.termix.shared.shell.command.result.ResultData;
+import com.termix.shared.errors.Errno;
+import com.termix.shared.errors.Error;
+import com.termix.shared.notification.NotificationUtils;
+import com.termix.shared.termux.models.UserAction;
+import com.termix.shared.termux.notification.TremixNotificationUtils;
+import com.termix.shared.termux.settings.preferences.TremixPreferenceConstants;
+import com.termix.shared.shell.command.result.ResultSender;
+import com.termix.shared.shell.ShellUtils;
+import com.termix.shared.android.AndroidUtils;
+import com.termix.shared.termux.TremixConstants;
+import com.termix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.termix.shared.termux.settings.preferences.TremixPreferenceConstants.TERMUX_APP;
+import com.termix.shared.models.ReportInfo;
+import com.termix.shared.termux.settings.properties.TremixAppSharedProperties;
+import com.termix.shared.shell.command.ExecutionCommand;
+import com.termix.shared.data.DataUtils;
+import com.termix.shared.markdown.MarkdownUtils;
+import com.termix.shared.termux.TremixUtils;
 
-public class TermuxPluginUtils {
+public class TremixPluginUtils {
 
-    private static final String LOG_TAG = "TermuxPluginUtils";
+    private static final String LOG_TAG = "TremixPluginUtils";
 
     /**
      * Process {@link ExecutionCommand} result.
@@ -94,7 +94,7 @@ public class TermuxPluginUtils {
                 sendPluginCommandErrorNotification(context, logTag, null,
                     ResultData.getErrorsListMinimalString(resultData),
                     ExecutionCommand.getExecutionCommandMarkdownString(executionCommand),
-                    false, true, TermuxUtils.AppInfoMode.TERMUX_AND_CALLING_PACKAGE,true,
+                    false, true, TremixUtils.AppInfoMode.TERMUX_AND_CALLING_PACKAGE,true,
                     executionCommand.resultConfig.resultPendingIntent != null ? executionCommand.resultConfig.resultPendingIntent.getCreatorPackage(): null);
             }
 
@@ -140,7 +140,7 @@ public class TermuxPluginUtils {
      *
      * Otherwise if the {@link TERMUX_APP#KEY_PLUGIN_ERROR_NOTIFICATIONS_ENABLED} is
      * enabled, then a flash and a notification will be shown for the error as well
-     * on the {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME} channel instead of just logging
+     * on the {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME} channel instead of just logging
      * the error.
      *
      * @param context The {@link Context} for operations.
@@ -200,7 +200,7 @@ public class TermuxPluginUtils {
         sendPluginCommandErrorNotification(context, logTag, null,
             ResultData.getErrorsListMinimalString(resultData),
             ExecutionCommand.getExecutionCommandMarkdownString(executionCommand),
-            forceNotification, true, TermuxUtils.AppInfoMode.TERMUX_AND_CALLING_PACKAGE, true,
+            forceNotification, true, TremixUtils.AppInfoMode.TERMUX_AND_CALLING_PACKAGE, true,
             executionCommand.resultConfig.resultPendingIntent != null ? executionCommand.resultConfig.resultPendingIntent.getCreatorPackage(): null);
     }
 
@@ -224,8 +224,8 @@ public class TermuxPluginUtils {
     public static void setPluginResultDirectoryVariables(ExecutionCommand executionCommand) {
         ResultConfig resultConfig = executionCommand.resultConfig;
 
-        resultConfig.resultDirectoryPath = TermuxFileUtils.getCanonicalPath(resultConfig.resultDirectoryPath, null, true);
-        resultConfig.resultDirectoryAllowedParentPath = TermuxFileUtils.getMatchedAllowedTermuxWorkingDirectoryParentPathForPath(resultConfig.resultDirectoryPath);
+        resultConfig.resultDirectoryPath = TremixFileUtils.getCanonicalPath(resultConfig.resultDirectoryPath, null, true);
+        resultConfig.resultDirectoryAllowedParentPath = TremixFileUtils.getMatchedAllowedTremixWorkingDirectoryParentPathForPath(resultConfig.resultDirectoryPath);
 
         // Set default resultFileBasename if resultSingleFile is true to `<executable_basename>-<timestamp>.log`
         if (resultConfig.resultSingleFile && resultConfig.resultFileBasename == null)
@@ -236,8 +236,8 @@ public class TermuxPluginUtils {
 
 
     /**
-     * Send a plugin error report notification for {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
-     * and {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
+     * Send a plugin error report notification for {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
+     * and {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
      *
      * @param currentPackageContext The {@link Context} of current package.
      * @param logTag The log tag to use for logging.
@@ -254,8 +254,8 @@ public class TermuxPluginUtils {
     }
 
     /**
-     * Send a plugin error report notification for {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
-     * and {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
+     * Send a plugin error report notification for {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
+     * and {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
      *
      * @param currentPackageContext The {@link Context} of current package.
      * @param logTag The log tag to use for logging.
@@ -272,8 +272,8 @@ public class TermuxPluginUtils {
     }
 
     /**
-     * Send a plugin error report notification for {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
-     * and {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
+     * Send a plugin error report notification for {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
+     * and {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
      *
      * @param currentPackageContext The {@link Context} of current package.
      * @param logTag The log tag to use for logging.
@@ -282,7 +282,7 @@ public class TermuxPluginUtils {
      * @param message The message for the error report.
      * @param forceNotification If set to {@code true}, then a notification will be shown
      *                          regardless of if pending intent is {@code null} or
-     *                          {@link TermuxPreferenceConstants.TERMUX_APP#KEY_PLUGIN_ERROR_NOTIFICATIONS_ENABLED}
+     *                          {@link TremixPreferenceConstants.TERMUX_APP#KEY_PLUGIN_ERROR_NOTIFICATIONS_ENABLED}
      *                          is {@code false}.
      * @param showToast If set to {@code true}, then a toast will be shown for {@code notificationTextString}.
      * @param addDeviceInfo If set to {@code true}, then device info should be appended to the message.
@@ -294,12 +294,12 @@ public class TermuxPluginUtils {
                                                          boolean addDeviceInfo) {
         sendPluginCommandErrorNotification(currentPackageContext, logTag,
             title, notificationTextString, "## " + title + "\n\n" + message + "\n\n",
-            forceNotification, showToast, TermuxUtils.AppInfoMode.TERMUX_AND_PLUGIN_PACKAGE, addDeviceInfo, null);
+            forceNotification, showToast, TremixUtils.AppInfoMode.TERMUX_AND_PLUGIN_PACKAGE, addDeviceInfo, null);
     }
 
     /**
-     * Send a plugin error notification for {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
-     * and {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
+     * Send a plugin error notification for {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
+     * and {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
      *
      * @param currentPackageContext The {@link Context} of current package.
      * @param logTag The log tag to use for logging.
@@ -308,10 +308,10 @@ public class TermuxPluginUtils {
      * @param message The message for the error report.
      * @param forceNotification If set to {@code true}, then a notification will be shown
      *                          regardless of if pending intent is {@code null} or
-     *                          {@link TermuxPreferenceConstants.TERMUX_APP#KEY_PLUGIN_ERROR_NOTIFICATIONS_ENABLED}
+     *                          {@link TremixPreferenceConstants.TERMUX_APP#KEY_PLUGIN_ERROR_NOTIFICATIONS_ENABLED}
      *                          is {@code false}.
      * @param showToast If set to {@code true}, then a toast will be shown for {@code notificationTextString}.
-     * @param appInfoMode The {@link TermuxUtils.AppInfoMode} to use to add app info to the message.
+     * @param appInfoMode The {@link TremixUtils.AppInfoMode} to use to add app info to the message.
      *                    Set to {@code null} if app info should not be appended to the message.
      * @param addDeviceInfo If set to {@code true}, then device info should be appended to the message.
      * @param callingPackageName The optional package name of the app for which the plugin command
@@ -322,7 +322,7 @@ public class TermuxPluginUtils {
                                                           String notificationTextString,
                                                           String message, boolean forceNotification,
                                                           boolean showToast,
-                                                          TermuxUtils.AppInfoMode appInfoMode,
+                                                          TremixUtils.AppInfoMode appInfoMode,
                                                           boolean addDeviceInfo,
                                                           String callingPackageName) {
         // Note: Do not change currentPackageContext or termuxPackageContext passed to functions or things will break
@@ -330,13 +330,13 @@ public class TermuxPluginUtils {
         if (currentPackageContext == null) return;
         String currentPackageName = currentPackageContext.getPackageName();
 
-        final Context termuxPackageContext = TermuxUtils.getTermuxPackageContext(currentPackageContext);
+        final Context termuxPackageContext = TremixUtils.getTremixPackageContext(currentPackageContext);
         if (termuxPackageContext == null) {
-            Logger.logWarn(LOG_TAG, "Ignoring call to sendPluginCommandErrorNotification() since failed to get \"" + TermuxConstants.TERMUX_PACKAGE_NAME + "\" package context from \"" + currentPackageName + "\" context");
+            Logger.logWarn(LOG_TAG, "Ignoring call to sendPluginCommandErrorNotification() since failed to get \"" + TremixConstants.TERMUX_PACKAGE_NAME + "\" package context from \"" + currentPackageName + "\" context");
             return;
         }
 
-        TermuxAppSharedPreferences preferences = TermuxAppSharedPreferences.build(termuxPackageContext);
+        TremixAppSharedPreferences preferences = TremixAppSharedPreferences.build(termuxPackageContext);
         if (preferences == null) return;
 
         // If user has disabled notifications for plugin commands, then just return
@@ -351,14 +351,14 @@ public class TermuxPluginUtils {
         // Send a notification to show the error which when clicked will open the ReportActivity
         // to show the details of the error
         if (title == null || title.toString().isEmpty())
-            title = TermuxConstants.TERMUX_APP_NAME + " Plugin Execution Command Error";
+            title = TremixConstants.TERMUX_APP_NAME + " Plugin Execution Command Error";
 
         Logger.logDebug(logTag, "Sending \"" + title + "\" notification.");
 
         StringBuilder reportString = new StringBuilder(message);
 
         if (appInfoMode != null)
-            reportString.append("\n\n").append(TermuxUtils.getAppInfoMarkdownString(currentPackageContext, appInfoMode,
+            reportString.append("\n\n").append(TremixUtils.getAppInfoMarkdownString(currentPackageContext, appInfoMode,
                 callingPackageName != null ? callingPackageName : currentPackageName));
 
         if (addDeviceInfo)
@@ -368,17 +368,17 @@ public class TermuxPluginUtils {
 
         ReportInfo reportInfo = new ReportInfo(userActionName, logTag, title.toString());
         reportInfo.setReportString(reportString.toString());
-        reportInfo.setReportStringSuffix("\n\n" + TermuxUtils.getReportIssueMarkdownString(currentPackageContext));
+        reportInfo.setReportStringSuffix("\n\n" + TremixUtils.getReportIssueMarkdownString(currentPackageContext));
         reportInfo.setAddReportInfoHeaderToMarkdown(true);
         reportInfo.setReportSaveFileLabelAndPath(userActionName,
             Environment.getExternalStorageDirectory() + "/" +
-                FileUtils.sanitizeFileName(TermuxConstants.TERMUX_APP_NAME + "-" + userActionName + ".log", true, true));
+                FileUtils.sanitizeFileName(TremixConstants.TERMUX_APP_NAME + "-" + userActionName + ".log", true, true));
 
         ReportActivity.NewInstanceResult result = ReportActivity.newInstance(termuxPackageContext, reportInfo);
         if (result.contentIntent == null) return;
 
         // Must ensure result code for PendingIntents and id for notification are unique otherwise will override previous
-        int nextNotificationId = TermuxNotificationUtils.getNextNotificationId(termuxPackageContext);
+        int nextNotificationId = TremixNotificationUtils.getNextNotificationId(termuxPackageContext);
 
         PendingIntent contentIntent = PendingIntent.getActivity(termuxPackageContext, nextNotificationId, result.contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -406,8 +406,8 @@ public class TermuxPluginUtils {
     }
 
     /**
-     * Get {@link Notification.Builder} for {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
-     * and {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
+     * Get {@link Notification.Builder} for {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID}
+     * and {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
      *
      * @param currentPackageContext The {@link Context} of current package.
      * @param termuxPackageContext The {@link Context} of termux package.
@@ -428,28 +428,28 @@ public class TermuxPluginUtils {
                                                                                  final PendingIntent contentIntent,
                                                                                  final PendingIntent deleteIntent,
                                                                                  final int notificationMode) {
-        return TermuxNotificationUtils.getTermuxOrPluginAppNotificationBuilder(
+        return TremixNotificationUtils.getTremixOrPluginAppNotificationBuilder(
             currentPackageContext, termuxPackageContext,
-            TermuxConstants.TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID, Notification.PRIORITY_HIGH,
+            TremixConstants.TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID, Notification.PRIORITY_HIGH,
             title, notificationText, notificationBigText, contentIntent, deleteIntent, notificationMode);
     }
 
     /**
-     * Setup the notification channel for {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID} and
-     * {@link TermuxConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
+     * Setup the notification channel for {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID} and
+     * {@link TremixConstants#TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME}.
      *
      * @param context The {@link Context} for operations.
      */
     public static void setupPluginCommandErrorsNotificationChannel(final Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
-        NotificationUtils.setupNotificationChannel(context, TermuxConstants.TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID,
-            TermuxConstants.TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
+        NotificationUtils.setupNotificationChannel(context, TremixConstants.TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_ID,
+            TremixConstants.TERMUX_PLUGIN_COMMAND_ERRORS_NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
     }
 
 
 
     /**
-     * Check if {@link TermuxConstants#PROP_ALLOW_EXTERNAL_APPS} property is not set to "true".
+     * Check if {@link TremixConstants#PROP_ALLOW_EXTERNAL_APPS} property is not set to "true".
      *
      * @param context The {@link Context} to get error string.
      * @return Returns the {@code error} if policy is violated, otherwise {@code null}.
@@ -457,10 +457,10 @@ public class TermuxPluginUtils {
     public static String checkIfAllowExternalAppsPolicyIsViolated(final Context context, String apiName) {
         String errmsg = null;
 
-        TermuxAppSharedProperties mProperties = TermuxAppSharedProperties.getProperties();
+        TremixAppSharedProperties mProperties = TremixAppSharedProperties.getProperties();
         if (mProperties == null || !mProperties.shouldAllowExternalApps()) {
             errmsg = context.getString(R.string.error_allow_external_apps_ungranted, apiName,
-                TermuxFileUtils.getUnExpandedTermuxPath(TermuxConstants.TERMUX_PROPERTIES_PRIMARY_FILE_PATH));
+                TremixFileUtils.getUnExpandedTremixPath(TremixConstants.TERMUX_PROPERTIES_PRIMARY_FILE_PATH));
         }
 
         return errmsg;

@@ -1,4 +1,4 @@
-package com.termux.shared.termux.extrakeys;
+package com.termix.shared.termux.extrakeys;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,9 +32,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.button.MaterialButton;
-import com.termux.shared.R;
-import com.termux.shared.termux.terminal.io.TerminalExtraKeys;
-import com.termux.shared.theme.ThemeUtils;
+import com.termix.shared.R;
+import com.termix.shared.termux.terminal.io.TerminalExtraKeys;
+import com.termix.shared.theme.ThemeUtils;
 
 /**
  * A {@link View} showing extra keys (such as Escape, Ctrl, Alt) not normally available on an Android soft
@@ -44,7 +44,7 @@ import com.termux.shared.theme.ThemeUtils;
  * it with a {@link androidx.viewpager.widget.ViewPager}.:
  * {@code
  * <?xml version="1.0" encoding="utf-8"?>
- * <com.termux.shared.termux.extrakeys.ExtraKeysView xmlns:android="http://schemas.android.com/apk/res/android"
+ * <com.termix.shared.termux.extrakeys.ExtraKeysView xmlns:android="http://schemas.android.com/apk/res/android"
  *     android:id="@+id/extra_keys"
  *     style="?android:attr/buttonBarStyle"
  *     android:layout_width="match_parent"
@@ -64,13 +64,13 @@ import com.termux.shared.theme.ThemeUtils;
  * it the {@link ExtraKeysInfo} to load and display the extra keys. Read its class javadocs for more
  * info on how to create it.
  *
- * Termux app defines the view in res/layout/view_terminal_toolbar_extra_keys and
+ * Tremix app defines the view in res/layout/view_terminal_toolbar_extra_keys and
  * inflates it in TerminalToolbarViewPager.instantiateItem() and sets the {@link ExtraKeysView} client
  * and calls {@link ExtraKeysView#reload(ExtraKeysInfo).
- * The {@link ExtraKeysInfo} is created by TermuxAppSharedProperties.setExtraKeys().
- * Then its got and the view height is adjusted in TermuxActivity.setTerminalToolbarHeight().
- * The client used is TermuxTerminalExtraKeys, which extends
- * {@link TerminalExtraKeys } to handle Termux app specific logic and
+ * The {@link ExtraKeysInfo} is created by TremixAppSharedProperties.setExtraKeys().
+ * Then its got and the view height is adjusted in TremixActivity.setTerminalToolbarHeight().
+ * The client used is TremixTerminalExtraKeys, which extends
+ * {@link TerminalExtraKeys } to handle Tremix app specific logic and
  * leave the rest to the super class.
  */
 public final class ExtraKeysView extends GridLayout {

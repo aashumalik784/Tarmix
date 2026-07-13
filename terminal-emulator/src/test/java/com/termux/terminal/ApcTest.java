@@ -1,4 +1,4 @@
-package com.termux.terminal;
+package com.termix.terminal;
 
 public class ApcTest extends TerminalTestCase {
 

@@ -1,61 +1,61 @@
-package com.termux.shared.termux.settings.preferences;
+package com.termix.shared.termux.settings.preferences;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.logger.Logger;
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.settings.preferences.AppSharedPreferences;
-import com.termux.shared.settings.preferences.SharedPreferenceUtils;
-import com.termux.shared.termux.TermuxUtils;
-import com.termux.shared.termux.settings.preferences.TermuxPreferenceConstants.TERMUX_BOOT_APP;
-import com.termux.shared.termux.TermuxConstants;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.android.PackageUtils;
+import com.termix.shared.settings.preferences.AppSharedPreferences;
+import com.termix.shared.settings.preferences.SharedPreferenceUtils;
+import com.termix.shared.termux.TremixUtils;
+import com.termix.shared.termux.settings.preferences.TremixPreferenceConstants.TERMUX_BOOT_APP;
+import com.termix.shared.termux.TremixConstants;
 
-public class TermuxBootAppSharedPreferences extends AppSharedPreferences {
+public class TremixBootAppSharedPreferences extends AppSharedPreferences {
 
-    private static final String LOG_TAG = "TermuxBootAppSharedPreferences";
+    private static final String LOG_TAG = "TremixBootAppSharedPreferences";
 
-    private TermuxBootAppSharedPreferences(@NonNull Context context) {
+    private TremixBootAppSharedPreferences(@NonNull Context context) {
         super(context,
             SharedPreferenceUtils.getPrivateSharedPreferences(context,
-                TermuxConstants.TERMUX_BOOT_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION),
+                TremixConstants.TERMUX_BOOT_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION),
             SharedPreferenceUtils.getPrivateAndMultiProcessSharedPreferences(context,
-                TermuxConstants.TERMUX_BOOT_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION));
+                TremixConstants.TERMUX_BOOT_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION));
     }
 
     /**
-     * Get {@link TermuxBootAppSharedPreferences}.
+     * Get {@link TremixBootAppSharedPreferences}.
      *
      * @param context The {@link Context} to use to get the {@link Context} of the
-     *                {@link TermuxConstants#TERMUX_BOOT_PACKAGE_NAME}.
-     * @return Returns the {@link TermuxBootAppSharedPreferences}. This will {@code null} if an exception is raised.
+     *                {@link TremixConstants#TERMUX_BOOT_PACKAGE_NAME}.
+     * @return Returns the {@link TremixBootAppSharedPreferences}. This will {@code null} if an exception is raised.
      */
     @Nullable
-    public static TermuxBootAppSharedPreferences build(@NonNull final Context context) {
-        Context termuxBootPackageContext = PackageUtils.getContextForPackage(context, TermuxConstants.TERMUX_BOOT_PACKAGE_NAME);
+    public static TremixBootAppSharedPreferences build(@NonNull final Context context) {
+        Context termuxBootPackageContext = PackageUtils.getContextForPackage(context, TremixConstants.TERMUX_BOOT_PACKAGE_NAME);
         if (termuxBootPackageContext == null)
             return null;
         else
-            return new TermuxBootAppSharedPreferences(termuxBootPackageContext);
+            return new TremixBootAppSharedPreferences(termuxBootPackageContext);
     }
 
     /**
-     * Get {@link TermuxBootAppSharedPreferences}.
+     * Get {@link TremixBootAppSharedPreferences}.
      *
      * @param context The {@link Context} to use to get the {@link Context} of the
-     *                {@link TermuxConstants#TERMUX_BOOT_PACKAGE_NAME}.
+     *                {@link TremixConstants#TERMUX_BOOT_PACKAGE_NAME}.
      * @param exitAppOnError If {@code true} and failed to get package context, then a dialog will
      *                       be shown which when dismissed will exit the app.
-     * @return Returns the {@link TermuxBootAppSharedPreferences}. This will {@code null} if an exception is raised.
+     * @return Returns the {@link TremixBootAppSharedPreferences}. This will {@code null} if an exception is raised.
      */
-    public static TermuxBootAppSharedPreferences build(@NonNull final Context context, final boolean exitAppOnError) {
-        Context termuxBootPackageContext = TermuxUtils.getContextForPackageOrExitApp(context, TermuxConstants.TERMUX_BOOT_PACKAGE_NAME, exitAppOnError);
+    public static TremixBootAppSharedPreferences build(@NonNull final Context context, final boolean exitAppOnError) {
+        Context termuxBootPackageContext = TremixUtils.getContextForPackageOrExitApp(context, TremixConstants.TERMUX_BOOT_PACKAGE_NAME, exitAppOnError);
         if (termuxBootPackageContext == null)
             return null;
         else
-            return new TermuxBootAppSharedPreferences(termuxBootPackageContext);
+            return new TremixBootAppSharedPreferences(termuxBootPackageContext);
     }
 
 

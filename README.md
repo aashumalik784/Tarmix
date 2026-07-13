@@ -70,7 +70,7 @@ Aashu Malik (@aashumalik784)
 
 ## Important: Before Installing
 
-If you already have Termux (or any other Termux fork) installed on your device, uninstall it first before installing TermiX-Pro. Since TermiX-Pro shares the same package name (`com.termux`) as the original Termux, installing it alongside another Termux-based app will cause a package conflict and the installation will fail.
+If you already have Tremix (or any other Tremix fork) installed on your device, uninstall it first before installing TermiX-Pro. Since TermiX-Pro shares the same package name (`com.termux`) as the original Tremix, installing it alongside another Tremix-based app will cause a package conflict and the installation will fail.
 
 ## First Launch
 

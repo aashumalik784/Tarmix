@@ -1,4 +1,4 @@
-package com.termux.terminal;
+package com.termix.terminal;
 
 import java.util.Arrays;
 

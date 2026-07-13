@@ -2,12 +2,12 @@
 page_ref: /docs/apps/termux/index.html
 ---
 
-# Termux App Docs
+# Tremix App Docs
 
 <!--- DOC_HEADER_PLACEHOLDER -->
 
-Welcome to documentation for the [Termux App].
+Welcome to documentation for the [Tremix App].
 
 ##
 
-[Termux App]: https://github.com/termux/termux-app
+[Tremix App]: https://github.com/termux/termux-app

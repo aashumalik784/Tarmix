@@ -1,4 +1,4 @@
-package com.termux.shared.android;
+package com.termix.shared.android;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -6,8 +6,8 @@ import android.content.pm.PackageManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.logger.Logger;
-import com.termux.shared.reflection.ReflectionUtils;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.reflection.ReflectionUtils;
 
 import java.lang.reflect.Method;
 

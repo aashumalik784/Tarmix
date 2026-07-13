@@ -1,4 +1,4 @@
-package com.termux.shared.android;
+package com.termix.shared.android;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -20,12 +20,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.common.base.Joiner;
-import com.termux.shared.R;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.errors.Error;
-import com.termux.shared.errors.FunctionErrno;
-import com.termux.shared.activity.ActivityUtils;
+import com.termix.shared.R;
+import com.termix.shared.file.FileUtils;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.errors.Error;
+import com.termix.shared.errors.FunctionErrno;
+import com.termix.shared.activity.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

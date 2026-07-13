@@ -1,4 +1,4 @@
-package com.termux.shared.interact;
+package com.termix.shared.interact;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,13 +13,13 @@ import android.os.Environment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.termux.shared.R;
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.data.IntentUtils;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.errors.Error;
-import com.termux.shared.android.PermissionUtils;
+import com.termix.shared.R;
+import com.termix.shared.data.DataUtils;
+import com.termix.shared.data.IntentUtils;
+import com.termix.shared.file.FileUtils;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.errors.Error;
+import com.termix.shared.android.PermissionUtils;
 
 import java.nio.charset.Charset;
 

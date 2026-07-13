@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# TermiX-Pro Auto-Setup Script for Termux App
+# TermiX-Pro Auto-Setup Script for Tremix App
 
 TERMIX_MARKER="/sdcard/.termix-pro-initialized"
 

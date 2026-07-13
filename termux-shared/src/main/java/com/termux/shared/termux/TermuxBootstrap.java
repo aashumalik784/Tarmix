@@ -1,18 +1,18 @@
-package com.termux.shared.termux;
+package com.termix.shared.termux;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.logger.Logger;
-import com.termux.shared.termux.TermuxConstants.TERMUX_APP;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.termux.TremixConstants.TERMUX_APP;
 
-public class TermuxBootstrap {
+public class TremixBootstrap {
 
-    private static final String LOG_TAG = "TermuxBootstrap";
+    private static final String LOG_TAG = "TremixBootstrap";
 
-    /** The field name used by Termux app to store package variant in
+    /** The field name used by Tremix app to store package variant in
      * {@link TERMUX_APP#BUILD_CONFIG_CLASS_NAME} class. */
     public static final String BUILD_CONFIG_FIELD_TERMUX_PACKAGE_VARIANT = "TERMUX_PACKAGE_VARIANT";
 
@@ -24,7 +24,7 @@ public class TermuxBootstrap {
     public static PackageVariant TERMUX_APP_PACKAGE_VARIANT;
 
     /** Set {@link #TERMUX_APP_PACKAGE_VARIANT} and {@link #TERMUX_APP_PACKAGE_MANAGER} from {@code packageVariantName} passed. */
-    public static void setTermuxPackageManagerAndVariant(@Nullable String packageVariantName) {
+    public static void setTremixPackageManagerAndVariant(@Nullable String packageVariantName) {
         TERMUX_APP_PACKAGE_VARIANT = PackageVariant.variantOf(packageVariantName);
         if (TERMUX_APP_PACKAGE_VARIANT == null) {
             throw new RuntimeException("Unsupported TERMUX_APP_PACKAGE_VARIANT \"" + packageVariantName + "\"");
@@ -46,16 +46,16 @@ public class TermuxBootstrap {
     /**
      * Set {@link #TERMUX_APP_PACKAGE_VARIANT} and {@link #TERMUX_APP_PACKAGE_MANAGER} with the
      * {@link #BUILD_CONFIG_FIELD_TERMUX_PACKAGE_VARIANT} field value from the
-     * {@link TERMUX_APP#BUILD_CONFIG_CLASS_NAME} class of the Termux app APK installed on the device.
-     * This can only be used by apps that share `sharedUserId` with the Termux app and can be used
+     * {@link TERMUX_APP#BUILD_CONFIG_CLASS_NAME} class of the Tremix app APK installed on the device.
+     * This can only be used by apps that share `sharedUserId` with the Tremix app and can be used
      * by plugin apps.
      *
      * @param currentPackageContext The context of current package.
      */
-    public static void setTermuxPackageManagerAndVariantFromTermuxApp(@NonNull Context currentPackageContext) {
-        String packageVariantName = getTermuxAppBuildConfigPackageVariantFromTermuxApp(currentPackageContext);
+    public static void setTremixPackageManagerAndVariantFromTremixApp(@NonNull Context currentPackageContext) {
+        String packageVariantName = getTremixAppBuildConfigPackageVariantFromTremixApp(currentPackageContext);
         if (packageVariantName != null) {
-            TermuxBootstrap.setTermuxPackageManagerAndVariant(packageVariantName);
+            TremixBootstrap.setTremixPackageManagerAndVariant(packageVariantName);
         } else {
             Logger.logError(LOG_TAG, "Failed to set TERMUX_APP_PACKAGE_VARIANT and TERMUX_APP_PACKAGE_MANAGER from the termux app");
         }
@@ -63,16 +63,16 @@ public class TermuxBootstrap {
 
     /**
      * Get {@link #BUILD_CONFIG_FIELD_TERMUX_PACKAGE_VARIANT} field value from the
-     * {@link TERMUX_APP#BUILD_CONFIG_CLASS_NAME} class of the Termux app APK installed on the device.
-     * This can only be used by apps that share `sharedUserId` with the Termux app.
+     * {@link TERMUX_APP#BUILD_CONFIG_CLASS_NAME} class of the Tremix app APK installed on the device.
+     * This can only be used by apps that share `sharedUserId` with the Tremix app.
      *
      * @param currentPackageContext The context of current package.
      * @return Returns the field value, otherwise {@code null} if an exception was raised or failed
      * to get termux app package context.
      */
-    public static String getTermuxAppBuildConfigPackageVariantFromTermuxApp(@NonNull Context currentPackageContext) {
+    public static String getTremixAppBuildConfigPackageVariantFromTremixApp(@NonNull Context currentPackageContext) {
         try {
-            return (String) TermuxUtils.getTermuxAppAPKBuildConfigClassField(currentPackageContext, BUILD_CONFIG_FIELD_TERMUX_PACKAGE_VARIANT);
+            return (String) TremixUtils.getTremixAppAPKBuildConfigClassField(currentPackageContext, BUILD_CONFIG_FIELD_TERMUX_PACKAGE_VARIANT);
         } catch (Exception e) {
             Logger.logStackTraceWithMessage(LOG_TAG, "Failed to get \"" + BUILD_CONFIG_FIELD_TERMUX_PACKAGE_VARIANT + "\" value from \"" + TERMUX_APP.BUILD_CONFIG_CLASS_NAME + "\" class", e);
             return null;
@@ -120,7 +120,7 @@ public class TermuxBootstrap {
 
 
 
-    /** Termux package manager. */
+    /** Tremix package manager. */
     public enum PackageManager {
 
         /**
@@ -131,7 +131,7 @@ public class TermuxBootstrap {
         APT("apt");
 
         ///**
-        // * Termux Android Package Manager (TAPM) for managing termux apk package files.
+        // * Tremix Android Package Manager (TAPM) for managing termux apk package files.
         // * https://en.wikipedia.org/wiki/Apk_(file_format)
         // */
         //TAPM("tapm");
@@ -173,7 +173,7 @@ public class TermuxBootstrap {
 
 
 
-    /** Termux package variant. The substring before first dash "-" must match one of the {@link PackageManager}. */
+    /** Tremix package variant. The substring before first dash "-" must match one of the {@link PackageManager}. */
     public enum PackageVariant {
 
         /** {@link PackageManager#APT} variant for Android 7+. */

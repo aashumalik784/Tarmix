@@ -1,12 +1,12 @@
-package com.termux.shared.net.socket.local;
+package com.termix.shared.net.socket.local;
 
 import androidx.annotation.NonNull;
 
-import com.termux.shared.data.DataUtils;
-import com.termux.shared.errors.Error;
-import com.termux.shared.jni.models.JniResult;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.markdown.MarkdownUtils;
+import com.termix.shared.data.DataUtils;
+import com.termix.shared.errors.Error;
+import com.termix.shared.jni.models.JniResult;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.markdown.MarkdownUtils;
 
 import java.io.BufferedWriter;
 import java.io.Closeable;

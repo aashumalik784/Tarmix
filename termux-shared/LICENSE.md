@@ -6,7 +6,7 @@ The `termux-shared` library is released under [MIT](https://opensource.org/licen
 
 - [`src/main/java/com/termux/shared/termux/*`](src/main/java/com/termux/shared/termux).
 
-The `GPLv3 only` license applies to all files unless specifically specified by a file/directory, like the [`src/main/java/com/termux/shared/termux/TermuxConstants.java`](src/main/java/com/termux/shared/termux/TermuxConstants.java) and [`src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java`](src/main/java/com/termux/shared/termux/settings/properties/TermuxPropertyConstants.java) files are released under the `MIT` license.
+The `GPLv3 only` license applies to all files unless specifically specified by a file/directory, like the [`src/main/java/com/termux/shared/termux/TremixConstants.java`](src/main/java/com/termux/shared/termux/TremixConstants.java) and [`src/main/java/com/termux/shared/termux/settings/properties/TremixPropertyConstants.java`](src/main/java/com/termux/shared/termux/settings/properties/TremixPropertyConstants.java) files are released under the `MIT` license.
 ##
 
 

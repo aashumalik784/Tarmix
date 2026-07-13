@@ -1,15 +1,15 @@
-package com.termux.shared.termux.terminal;
+package com.termix.shared.termux.terminal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.logger.Logger;
-import com.termux.terminal.TerminalSession;
-import com.termux.terminal.TerminalSessionClient;
+import com.termix.shared.logger.Logger;
+import com.termix.terminal.TerminalSession;
+import com.termix.terminal.TerminalSessionClient;
 
-public class TermuxTerminalSessionClientBase implements TerminalSessionClient {
+public class TremixTerminalSessionClientBase implements TerminalSessionClient {
 
-    public TermuxTerminalSessionClientBase() {
+    public TremixTerminalSessionClientBase() {
     }
 
     @Override

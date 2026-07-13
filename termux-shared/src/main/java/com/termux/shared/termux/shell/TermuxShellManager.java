@@ -1,4 +1,4 @@
-package com.termux.shared.termux.shell;
+package com.termix.shared.termux.shell;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,34 +6,34 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
-import com.termux.shared.shell.command.ExecutionCommand;
-import com.termux.shared.shell.command.runner.app.AppShell;
-import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
-import com.termux.shared.termux.shell.command.runner.terminal.TermuxSession;
+import com.termix.shared.shell.command.ExecutionCommand;
+import com.termix.shared.shell.command.runner.app.AppShell;
+import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.termix.shared.termux.shell.command.runner.terminal.TremixSession;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TermuxShellManager {
+public class TremixShellManager {
 
-    private static TermuxShellManager shellManager;
+    private static TremixShellManager shellManager;
 
     private static int SHELL_ID = 0;
 
     protected final Context mContext;
 
     /**
-     * The foreground TermuxSessions which this service manages.
-     * Note that this list is observed by an activity, like TermuxActivity.mTermuxSessionListViewController,
+     * The foreground TremixSessions which this service manages.
+     * Note that this list is observed by an activity, like TremixActivity.mTremixSessionListViewController,
      * so any changes must be made on the UI thread and followed by a call to
      * {@link ArrayAdapter#notifyDataSetChanged()}.
      */
-    public final List<TermuxSession> mTermuxSessions = new ArrayList<>();
+    public final List<TremixSession> mTremixSessions = new ArrayList<>();
 
     /**
-     * The background TermuxTasks which this service manages.
+     * The background TremixTasks which this service manages.
      */
-    public final List<AppShell> mTermuxTasks = new ArrayList<>();
+    public final List<AppShell> mTremixTasks = new ArrayList<>();
 
     /**
      * The pending plugin ExecutionCommands that have yet to be processed by this service.
@@ -52,7 +52,7 @@ public class TermuxShellManager {
 
 
 
-    public TermuxShellManager(@NonNull Context context) {
+    public TremixShellManager(@NonNull Context context) {
         mContext = context.getApplicationContext();
     }
 
@@ -60,11 +60,11 @@ public class TermuxShellManager {
      * Initialize the {@link #shellManager}.
      *
      * @param context The {@link Context} for operations.
-     * @return Returns the {@link TermuxShellManager}.
+     * @return Returns the {@link TremixShellManager}.
      */
-    public static TermuxShellManager init(@NonNull Context context) {
+    public static TremixShellManager init(@NonNull Context context) {
         if (shellManager == null)
-            shellManager = new TermuxShellManager(context);
+            shellManager = new TremixShellManager(context);
 
         return shellManager;
     }
@@ -72,15 +72,15 @@ public class TermuxShellManager {
     /**
      * Get the {@link #shellManager}.
      *
-     * @return Returns the {@link TermuxShellManager}.
+     * @return Returns the {@link TremixShellManager}.
      */
-    public static TermuxShellManager getShellManager() {
+    public static TremixShellManager getShellManager() {
         return shellManager;
     }
 
 
     public synchronized static void onActionBootCompleted(@NonNull Context context, @NonNull Intent intent) {
-        TermuxAppSharedPreferences preferences = TermuxAppSharedPreferences.build(context);
+        TremixAppSharedPreferences preferences = TremixAppSharedPreferences.build(context);
         if (preferences == null) return;
 
         // Ensure any shells started after boot have valid ENV_SHELL_CMD__APP_SHELL_NUMBER_SINCE_BOOT and

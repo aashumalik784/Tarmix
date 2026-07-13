@@ -1,4 +1,4 @@
-package com.termux.shared.termux.notification;
+package com.termix.shared.termux.notification;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -8,38 +8,38 @@ import android.os.Build;
 
 import androidx.annotation.Nullable;
 
-import com.termux.shared.R;
-import com.termux.shared.android.resource.ResourceUtils;
-import com.termux.shared.notification.NotificationUtils;
-import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
-import com.termux.shared.termux.settings.preferences.TermuxPreferenceConstants;
-import com.termux.shared.termux.TermuxConstants;
+import com.termix.shared.R;
+import com.termix.shared.android.resource.ResourceUtils;
+import com.termix.shared.notification.NotificationUtils;
+import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.termix.shared.termux.settings.preferences.TremixPreferenceConstants;
+import com.termix.shared.termux.TremixConstants;
 
-public class TermuxNotificationUtils {
+public class TremixNotificationUtils {
     /**
      * Try to get the next unique notification id that isn't already being used by the app.
      *
-     * Termux app and its plugin must use unique notification ids from the same pool due to usage of android:sharedUserId.
+     * Tremix app and its plugin must use unique notification ids from the same pool due to usage of android:sharedUserId.
      * https://commonsware.com/blog/2017/06/07/jobscheduler-job-ids-libraries.html
      *
      * @param context The {@link Context} for operations.
      * @return Returns the notification id that should be safe to use.
      */
     public synchronized static int getNextNotificationId(final Context context) {
-        if (context == null) return TermuxPreferenceConstants.TERMUX_APP.DEFAULT_VALUE_KEY_LAST_NOTIFICATION_ID;
+        if (context == null) return TremixPreferenceConstants.TERMUX_APP.DEFAULT_VALUE_KEY_LAST_NOTIFICATION_ID;
 
-        TermuxAppSharedPreferences preferences = TermuxAppSharedPreferences.build(context);
-        if (preferences == null) return TermuxPreferenceConstants.TERMUX_APP.DEFAULT_VALUE_KEY_LAST_NOTIFICATION_ID;
+        TremixAppSharedPreferences preferences = TremixAppSharedPreferences.build(context);
+        if (preferences == null) return TremixPreferenceConstants.TERMUX_APP.DEFAULT_VALUE_KEY_LAST_NOTIFICATION_ID;
 
         int lastNotificationId = preferences.getLastNotificationId();
 
         int nextNotificationId = lastNotificationId + 1;
-        while(nextNotificationId == TermuxConstants.TERMUX_APP_NOTIFICATION_ID || nextNotificationId == TermuxConstants.TERMUX_RUN_COMMAND_NOTIFICATION_ID) {
+        while(nextNotificationId == TremixConstants.TERMUX_APP_NOTIFICATION_ID || nextNotificationId == TremixConstants.TERMUX_RUN_COMMAND_NOTIFICATION_ID) {
             nextNotificationId++;
         }
 
         if (nextNotificationId == Integer.MAX_VALUE || nextNotificationId < 0)
-            nextNotificationId = TermuxPreferenceConstants.TERMUX_APP.DEFAULT_VALUE_KEY_LAST_NOTIFICATION_ID;
+            nextNotificationId = TremixPreferenceConstants.TERMUX_APP.DEFAULT_VALUE_KEY_LAST_NOTIFICATION_ID;
 
         preferences.setLastNotificationId(nextNotificationId);
         return nextNotificationId;
@@ -61,7 +61,7 @@ public class TermuxNotificationUtils {
      * @return Returns the {@link Notification.Builder}.
      */
     @Nullable
-    public static Notification.Builder getTermuxOrPluginAppNotificationBuilder(final Context currentPackageContext,
+    public static Notification.Builder getTremixOrPluginAppNotificationBuilder(final Context currentPackageContext,
                                                                                  final Context termuxPackageContext,
                                                                                  final String channelId,
                                                                                  final int priority,

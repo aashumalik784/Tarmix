@@ -1,6 +1,6 @@
-package com.termux.shared.shell.command.result;
+package com.termix.shared.shell.command.result;
 
-import com.termux.shared.errors.Errno;
+import com.termix.shared.errors.Errno;
 
 /** The {@link Class} that defines ResultSender error messages and codes. */
 public class ResultSenderErrno extends Errno {

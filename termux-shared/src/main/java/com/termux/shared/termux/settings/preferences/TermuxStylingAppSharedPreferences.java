@@ -1,61 +1,61 @@
-package com.termux.shared.termux.settings.preferences;
+package com.termix.shared.termux.settings.preferences;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.logger.Logger;
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.settings.preferences.AppSharedPreferences;
-import com.termux.shared.settings.preferences.SharedPreferenceUtils;
-import com.termux.shared.termux.TermuxUtils;
-import com.termux.shared.termux.settings.preferences.TermuxPreferenceConstants.TERMUX_STYLING_APP;
-import com.termux.shared.termux.TermuxConstants;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.android.PackageUtils;
+import com.termix.shared.settings.preferences.AppSharedPreferences;
+import com.termix.shared.settings.preferences.SharedPreferenceUtils;
+import com.termix.shared.termux.TremixUtils;
+import com.termix.shared.termux.settings.preferences.TremixPreferenceConstants.TERMUX_STYLING_APP;
+import com.termix.shared.termux.TremixConstants;
 
-public class TermuxStylingAppSharedPreferences extends AppSharedPreferences {
+public class TremixStylingAppSharedPreferences extends AppSharedPreferences {
 
-    private static final String LOG_TAG = "TermuxStylingAppSharedPreferences";
+    private static final String LOG_TAG = "TremixStylingAppSharedPreferences";
 
-    private TermuxStylingAppSharedPreferences(@NonNull Context context) {
+    private TremixStylingAppSharedPreferences(@NonNull Context context) {
         super(context,
             SharedPreferenceUtils.getPrivateSharedPreferences(context,
-                TermuxConstants.TERMUX_STYLING_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION),
+                TremixConstants.TERMUX_STYLING_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION),
             SharedPreferenceUtils.getPrivateAndMultiProcessSharedPreferences(context,
-                TermuxConstants.TERMUX_STYLING_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION));
+                TremixConstants.TERMUX_STYLING_DEFAULT_PREFERENCES_FILE_BASENAME_WITHOUT_EXTENSION));
     }
 
     /**
-     * Get {@link TermuxStylingAppSharedPreferences}.
+     * Get {@link TremixStylingAppSharedPreferences}.
      *
      * @param context The {@link Context} to use to get the {@link Context} of the
-     *                {@link TermuxConstants#TERMUX_STYLING_PACKAGE_NAME}.
-     * @return Returns the {@link TermuxStylingAppSharedPreferences}. This will {@code null} if an exception is raised.
+     *                {@link TremixConstants#TERMUX_STYLING_PACKAGE_NAME}.
+     * @return Returns the {@link TremixStylingAppSharedPreferences}. This will {@code null} if an exception is raised.
      */
     @Nullable
-    public static TermuxStylingAppSharedPreferences build(@NonNull final Context context) {
-        Context termuxStylingPackageContext = PackageUtils.getContextForPackage(context, TermuxConstants.TERMUX_STYLING_PACKAGE_NAME);
+    public static TremixStylingAppSharedPreferences build(@NonNull final Context context) {
+        Context termuxStylingPackageContext = PackageUtils.getContextForPackage(context, TremixConstants.TERMUX_STYLING_PACKAGE_NAME);
         if (termuxStylingPackageContext == null)
             return null;
         else
-            return new TermuxStylingAppSharedPreferences(termuxStylingPackageContext);
+            return new TremixStylingAppSharedPreferences(termuxStylingPackageContext);
     }
 
     /**
-     * Get {@link TermuxStylingAppSharedPreferences}.
+     * Get {@link TremixStylingAppSharedPreferences}.
      *
      * @param context The {@link Context} to use to get the {@link Context} of the
-     *                {@link TermuxConstants#TERMUX_STYLING_PACKAGE_NAME}.
+     *                {@link TremixConstants#TERMUX_STYLING_PACKAGE_NAME}.
      * @param exitAppOnError If {@code true} and failed to get package context, then a dialog will
      *                       be shown which when dismissed will exit the app.
-     * @return Returns the {@link TermuxStylingAppSharedPreferences}. This will {@code null} if an exception is raised.
+     * @return Returns the {@link TremixStylingAppSharedPreferences}. This will {@code null} if an exception is raised.
      */
-    public static TermuxStylingAppSharedPreferences build(@NonNull final Context context, final boolean exitAppOnError) {
-        Context termuxStylingPackageContext = TermuxUtils.getContextForPackageOrExitApp(context, TermuxConstants.TERMUX_STYLING_PACKAGE_NAME, exitAppOnError);
+    public static TremixStylingAppSharedPreferences build(@NonNull final Context context, final boolean exitAppOnError) {
+        Context termuxStylingPackageContext = TremixUtils.getContextForPackageOrExitApp(context, TremixConstants.TERMUX_STYLING_PACKAGE_NAME, exitAppOnError);
         if (termuxStylingPackageContext == null)
             return null;
         else
-            return new TermuxStylingAppSharedPreferences(termuxStylingPackageContext);
+            return new TremixStylingAppSharedPreferences(termuxStylingPackageContext);
     }
 
 

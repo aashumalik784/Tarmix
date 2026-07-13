@@ -1,4 +1,4 @@
-package com.termux.shared.termux.settings.preferences;
+package com.termix.shared.termux.settings.preferences;
 
 /*
  * Version: v0.16.0
@@ -13,7 +13,7 @@ package com.termux.shared.termux.settings.preferences;
  *
  * - 0.3.0 (2021-03-16)
  *      - Changed to per app scoping of variables so that the same file can store all constants of
- *          Termux app and its plugins. This will allow {@link com.termux.app.TermuxSettings} to
+ *          Tremix app and its plugins. This will allow {@link com.termix.app.TremixSettings} to
  *          manage preferences of plugins as well if they don't have launcher activity themselves
  *          and also allow plugin apps to make changes to preferences from background.
  *      - Added following to `TERMUX_TASKER_APP`:
@@ -71,19 +71,19 @@ package com.termux.shared.termux.settings.preferences;
  *          `KEY_APP_SHELL_NUMBER_SINCE_BOOT` and `KEY_TERMINAL_SESSION_NUMBER_SINCE_BOOT`.
  */
 
-import com.termux.shared.shell.command.ExecutionCommand;
+import com.termix.shared.shell.command.ExecutionCommand;
 
 /**
- * A class that defines shared constants of the SharedPreferences used by Termux app and its plugins.
+ * A class that defines shared constants of the SharedPreferences used by Tremix app and its plugins.
  * This class will be hosted by termux-shared lib and should be imported by other termux plugin
  * apps as is instead of copying constants to random classes. The 3rd party apps can also import
  * it for interacting with termux apps. If changes are made to this file, increment the version number
  * and add an entry in the Changelog section above.
  */
-public final class TermuxPreferenceConstants {
+public final class TremixPreferenceConstants {
 
     /**
-     * Termux app constants.
+     * Tremix app constants.
      */
     public static final class TERMUX_APP {
 
@@ -185,7 +185,7 @@ public final class TermuxPreferenceConstants {
 
 
     /**
-     * Termux:API app constants.
+     * Tremix:API app constants.
      */
     public static final class TERMUX_API_APP {
 
@@ -206,7 +206,7 @@ public final class TermuxPreferenceConstants {
 
 
     /**
-     * Termux:Boot app constants.
+     * Tremix:Boot app constants.
      */
     public static final class TERMUX_BOOT_APP {
 
@@ -220,7 +220,7 @@ public final class TermuxPreferenceConstants {
 
 
     /**
-     * Termux:Float app constants.
+     * Tremix:Float app constants.
      */
     public static final class TERMUX_FLOAT_APP {
 
@@ -265,7 +265,7 @@ public final class TermuxPreferenceConstants {
 
 
     /**
-     * Termux:Styling app constants.
+     * Tremix:Styling app constants.
      */
     public static final class TERMUX_STYLING_APP {
 
@@ -279,7 +279,7 @@ public final class TermuxPreferenceConstants {
 
 
     /**
-     * Termux:Tasker app constants.
+     * Tremix:Tasker app constants.
      */
     public static final class TERMUX_TASKER_APP {
 
@@ -300,7 +300,7 @@ public final class TermuxPreferenceConstants {
 
 
     /**
-     * Termux:Widget app constants.
+     * Tremix:Widget app constants.
      */
     public static final class TERMUX_WIDGET_APP {
 

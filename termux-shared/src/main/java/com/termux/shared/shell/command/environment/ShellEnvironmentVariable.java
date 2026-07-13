@@ -1,4 +1,4 @@
-package com.termux.shared.shell.command.environment;
+package com.termix.shared.shell.command.environment;
 
 public class ShellEnvironmentVariable implements Comparable<ShellEnvironmentVariable> {
 

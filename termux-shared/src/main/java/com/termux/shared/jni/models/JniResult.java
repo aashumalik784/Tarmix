@@ -1,9 +1,9 @@
-package com.termux.shared.jni.models;
+package com.termix.shared.jni.models;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
-import com.termux.shared.logger.Logger;
+import com.termix.shared.logger.Logger;
 
 /**
  * A class that can be used to return result for JNI calls with support for multiple fields to easily

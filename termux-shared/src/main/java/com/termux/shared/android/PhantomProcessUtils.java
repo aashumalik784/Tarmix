@@ -1,4 +1,4 @@
-package com.termux.shared.android;
+package com.termix.shared.android;
 
 import android.Manifest;
 import android.content.Context;
@@ -6,15 +6,15 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.logger.Logger;
-import com.termux.shared.shell.command.environment.AndroidShellEnvironment;
-import com.termux.shared.shell.command.ExecutionCommand;
-import com.termux.shared.shell.command.runner.app.AppShell;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.shell.command.environment.AndroidShellEnvironment;
+import com.termix.shared.shell.command.ExecutionCommand;
+import com.termix.shared.shell.command.runner.app.AppShell;
 
 /**
  * Utils for phantom processes added in android 12.
  *
- * https://github.com/termux/termux-app/issues/2366
+ * https://github.com.termix/termux-app/issues/2366
  * https://issuetracker.google.com/u/1/issues/205156966#comment28
  * https://cs.android.com/android/_/android/platform/frameworks/base/+/09dcdad5
  * https://github.com/agnostic-apollo/Android-Docs/tree/master/ocs/apps/processes/phantom-cached-and-empty-processes.md

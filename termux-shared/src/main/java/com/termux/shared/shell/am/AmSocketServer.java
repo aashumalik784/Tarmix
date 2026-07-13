@@ -1,4 +1,4 @@
-package com.termux.shared.shell.am;
+package com.termix.shared.shell.am;
 
 import android.Manifest;
 import android.app.Application;
@@ -7,20 +7,20 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.am.Am;
-import com.termux.shared.R;
-import com.termux.shared.android.PackageUtils;
-import com.termux.shared.android.PermissionUtils;
-import com.termux.shared.errors.Error;
-import com.termux.shared.logger.Logger;
-import com.termux.shared.net.socket.local.ILocalSocketManager;
-import com.termux.shared.net.socket.local.LocalClientSocket;
-import com.termux.shared.net.socket.local.LocalServerSocket;
-import com.termux.shared.net.socket.local.LocalSocketManager;
-import com.termux.shared.net.socket.local.LocalSocketManagerClientBase;
-import com.termux.shared.net.socket.local.LocalSocketRunConfig;
-import com.termux.shared.shell.ArgumentTokenizer;
-import com.termux.shared.shell.command.ExecutionCommand;
+import com.termix.am.Am;
+import com.termix.shared.R;
+import com.termix.shared.android.PackageUtils;
+import com.termix.shared.android.PermissionUtils;
+import com.termix.shared.errors.Error;
+import com.termix.shared.logger.Logger;
+import com.termix.shared.net.socket.local.ILocalSocketManager;
+import com.termix.shared.net.socket.local.LocalClientSocket;
+import com.termix.shared.net.socket.local.LocalServerSocket;
+import com.termix.shared.net.socket.local.LocalSocketManager;
+import com.termix.shared.net.socket.local.LocalSocketManagerClientBase;
+import com.termix.shared.net.socket.local.LocalSocketRunConfig;
+import com.termix.shared.shell.ArgumentTokenizer;
+import com.termix.shared.shell.command.ExecutionCommand;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -52,8 +52,8 @@ import java.util.List;
  * 4. Stop server if needed with a call to {@link LocalSocketManager#stop()} on the
  *    {@link LocalSocketManager} instance returned by start call.
  *
- * https://github.com/termux/termux-am-library/blob/main/termux-am-library/src/main/java/com/termux/am/Am.java
- * https://github.com/termux/termux-am-socket
+ * https://github.com.termix/termux-am-library/blob/main/termux-am-library/src/main/java/com.termix/am/Am.java
+ * https://github.com.termix/termux-am-socket
  * https://developer.android.com/studio/command-line/adb#am
  * https://cs.android.com/android/platform/superproject/+/android-12.0.0_r32:frameworks/base/services/core/java/com/android/server/am/ActivityManagerShellCommand.java
  */

@@ -1,15 +1,15 @@
-package com.termux.shared.termux.settings.properties;
+package com.termix.shared.termux.settings.properties;
 
 import com.google.common.collect.ImmutableBiMap;
-import com.termux.shared.termux.shell.am.TermuxAmSocketServer;
-import com.termux.shared.theme.NightMode;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.file.filesystem.FileType;
-import com.termux.shared.settings.properties.SharedProperties;
-import com.termux.shared.termux.TermuxConstants;
-import com.termux.shared.logger.Logger;
-import com.termux.terminal.TerminalEmulator;
-import com.termux.view.TerminalView;
+import com.termix.shared.termux.shell.am.TremixAmSocketServer;
+import com.termix.shared.theme.NightMode;
+import com.termix.shared.file.FileUtils;
+import com.termix.shared.file.filesystem.FileType;
+import com.termix.shared.settings.properties.SharedProperties;
+import com.termix.shared.termux.TremixConstants;
+import com.termix.shared.logger.Logger;
+import com.termix.terminal.TerminalEmulator;
+import com.termix.view.TerminalView;
 
 import java.io.File;
 import java.util.Arrays;
@@ -67,7 +67,7 @@ import java.util.Set;
  *      - Add `*KEY_TERMINAL_MARGIN_HORIZONTAL*` and `*KEY_TERMINAL_MARGIN_VERTICAL*`.
  *
  * - 0.14.0 (2021-09-02)
- *      - Add `getTermuxFloatPropertiesFile()`.
+ *      - Add `getTremixFloatPropertiesFile()`.
  *
  * - 0.15.0 (2021-09-05)
  *      - Add `KEY_EXTRA_KEYS_TEXT_ALL_CAPS`.
@@ -83,19 +83,19 @@ import java.util.Set;
  */
 
 /**
- * A class that defines shared constants of the SharedProperties used by Termux app and its plugins.
+ * A class that defines shared constants of the SharedProperties used by Tremix app and its plugins.
  * This class will be hosted by termux-shared lib and should be imported by other termux plugin
  * apps as is instead of copying constants to random classes. The 3rd party apps can also import
  * it for interacting with termux apps. If changes are made to this file, increment the version number
  * and add an entry in the Changelog section above.
  *
  * The properties are loaded from the first file found at
- * {@link TermuxConstants#TERMUX_PROPERTIES_PRIMARY_FILE_PATH} or
- * {@link TermuxConstants#TERMUX_PROPERTIES_SECONDARY_FILE_PATH}
+ * {@link TremixConstants#TERMUX_PROPERTIES_PRIMARY_FILE_PATH} or
+ * {@link TremixConstants#TERMUX_PROPERTIES_SECONDARY_FILE_PATH}
  */
-public final class TermuxPropertyConstants {
+public final class TremixPropertyConstants {
 
-    private static final String LOG_TAG = "TermuxPropertyConstants";
+    private static final String LOG_TAG = "TremixPropertyConstants";
 
     /* boolean */
 
@@ -132,7 +132,7 @@ public final class TermuxPropertyConstants {
 
 
 
-    /** Defines the key for whether the {@link TermuxAmSocketServer} should be run at app startup */
+    /** Defines the key for whether the {@link TremixAmSocketServer} should be run at app startup */
     public static final String KEY_RUN_TERMUX_AM_SOCKET_SERVER =  "run-termux-am-socket-server"; // Default: "run-termux-am-socket-server"
 
 
@@ -319,7 +319,7 @@ public final class TermuxPropertyConstants {
     /** Defines the key for the default working directory */
     public static final String KEY_DEFAULT_WORKING_DIRECTORY =  "default-working-directory"; // Default: "default-working-directory"
     /** Defines the default working directory */
-    public static final String DEFAULT_IVALUE_DEFAULT_WORKING_DIRECTORY = TermuxConstants.TERMUX_HOME_DIR_PATH;
+    public static final String DEFAULT_IVALUE_DEFAULT_WORKING_DIRECTORY = TremixConstants.TERMUX_HOME_DIR_PATH;
 
 
 
@@ -403,7 +403,7 @@ public final class TermuxPropertyConstants {
         KEY_USE_CTRL_SPACE_WORKAROUND,
         KEY_USE_FULLSCREEN,
         KEY_USE_FULLSCREEN_WORKAROUND,
-        TermuxConstants.PROP_ALLOW_EXTERNAL_APPS,
+        TremixConstants.PROP_ALLOW_EXTERNAL_APPS,
 
         /* int */
         KEY_BELL_BEHAVIOUR,
@@ -449,7 +449,7 @@ public final class TermuxPropertyConstants {
         KEY_USE_CTRL_SPACE_WORKAROUND,
         KEY_USE_FULLSCREEN,
         KEY_USE_FULLSCREEN_WORKAROUND,
-        TermuxConstants.PROP_ALLOW_EXTERNAL_APPS
+        TremixConstants.PROP_ALLOW_EXTERNAL_APPS
     ));
 
     /** Defines the set for keys loaded by termux that have default boolean behaviour with true as default.

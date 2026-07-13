@@ -1,10 +1,10 @@
-package com.termux.shared.termux.data;
+package com.termix.shared.termux.data;
 
 import java.util.LinkedHashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TermuxUrlUtils {
+public class TremixUrlUtils {
 
     public static Pattern URL_MATCH_REGEX;
 

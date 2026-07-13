@@ -1,20 +1,20 @@
-package com.termux.shared.termux.theme;
+package com.termix.shared.termux.theme;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termux.shared.termux.settings.properties.TermuxPropertyConstants;
-import com.termux.shared.termux.settings.properties.TermuxSharedProperties;
-import com.termux.shared.theme.NightMode;
+import com.termix.shared.termux.settings.properties.TremixPropertyConstants;
+import com.termix.shared.termux.settings.properties.TremixSharedProperties;
+import com.termix.shared.theme.NightMode;
 
-public class TermuxThemeUtils {
+public class TremixThemeUtils {
 
-    /** Get the {@link TermuxPropertyConstants#KEY_NIGHT_MODE} value from the properties file on disk
+    /** Get the {@link TremixPropertyConstants#KEY_NIGHT_MODE} value from the properties file on disk
      * and set it to app wide night mode value. */
     public static void setAppNightMode(@NonNull Context context) {
-        NightMode.setAppNightMode(TermuxSharedProperties.getNightMode(context));
+        NightMode.setAppNightMode(TremixSharedProperties.getNightMode(context));
     }
 
     /** Set name as app wide night mode value. */

@@ -1,4 +1,4 @@
-package com.termux.shared.settings.properties;
+package com.termix.shared.settings.properties;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -9,9 +9,9 @@ import androidx.annotation.Nullable;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.primitives.Primitives;
-import com.termux.shared.file.FileUtils;
-import com.termux.shared.file.filesystem.FileType;
-import com.termux.shared.logger.Logger;
+import com.termix.shared.file.FileUtils;
+import com.termix.shared.file.filesystem.FileType;
+import com.termix.shared.logger.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -263,7 +263,7 @@ public class SharedProperties {
      *
      * @param propertiesFilePaths The {@link List<String>} containing properties file paths.
      * @param logTag If log tag to use for logging errors.
-     * @return Returns the {@link File} object for Termux:Float app properties.
+     * @return Returns the {@link File} object for Tremix:Float app properties.
      */
     public static File getPropertiesFileFromList(List<String> propertiesFilePaths, @NonNull String logTag) {
         if (propertiesFilePaths == null || propertiesFilePaths.size() == 0)

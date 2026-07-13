@@ -1,0 +1,169 @@
+package com.termix.app.activities;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Environment;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+
+import com.termix.R;
+import com.termix.shared.activities.ReportActivity;
+import com.termix.shared.file.FileUtils;
+import com.termix.shared.models.ReportInfo;
+import com.termix.app.models.UserAction;
+import com.termix.shared.interact.ShareUtils;
+import com.termix.shared.android.PackageUtils;
+import com.termix.shared.termux.settings.preferences.TremixAPIAppSharedPreferences;
+import com.termix.shared.termux.settings.preferences.TremixFloatAppSharedPreferences;
+import com.termix.shared.termux.settings.preferences.TremixTaskerAppSharedPreferences;
+import com.termix.shared.termux.settings.preferences.TremixWidgetAppSharedPreferences;
+import com.termix.shared.android.AndroidUtils;
+import com.termix.shared.termux.TremixConstants;
+import com.termix.shared.termux.TremixUtils;
+import com.termix.shared.activity.media.AppCompatActivityUtils;
+import com.termix.shared.theme.NightMode;
+
+public class SettingsActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        AppCompatActivityUtils.setNightMode(this, NightMode.getAppNightMode().getName(), true);
+
+        setContentView(R.layout.activity_settings);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.settings, new RootPreferencesFragment())
+                .commit();
+        }
+
+        AppCompatActivityUtils.setToolbar(this, com.termix.shared.R.id.toolbar);
+        AppCompatActivityUtils.setShowBackButtonInActionBar(this, true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    public static class RootPreferencesFragment extends PreferenceFragmentCompat {
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            Context context = getContext();
+            if (context == null) return;
+
+            setPreferencesFromResource(R.xml.root_preferences, rootKey);
+
+            new Thread() {
+                @Override
+                public void run() {
+                    configureTremixAPIPreference(context);
+                    configureTremixFloatPreference(context);
+                    configureTremixTaskerPreference(context);
+                    configureTremixWidgetPreference(context);
+                    configureAboutPreference(context);
+                    configureDonatePreference(context);
+                }
+            }.start();
+        }
+
+        private void configureTremixAPIPreference(@NonNull Context context) {
+            Preference termuxAPIPreference = findPreference("termux_api");
+            if (termuxAPIPreference != null) {
+                TremixAPIAppSharedPreferences preferences = TremixAPIAppSharedPreferences.build(context, false);
+                // If failed to get app preferences, then likely app is not installed, so do not show its preference
+                termuxAPIPreference.setVisible(preferences != null);
+            }
+        }
+
+        private void configureTremixFloatPreference(@NonNull Context context) {
+            Preference termuxFloatPreference = findPreference("termux_float");
+            if (termuxFloatPreference != null) {
+                TremixFloatAppSharedPreferences preferences = TremixFloatAppSharedPreferences.build(context, false);
+                // If failed to get app preferences, then likely app is not installed, so do not show its preference
+                termuxFloatPreference.setVisible(preferences != null);
+            }
+        }
+
+        private void configureTremixTaskerPreference(@NonNull Context context) {
+            Preference termuxTaskerPreference = findPreference("termux_tasker");
+            if (termuxTaskerPreference != null) {
+                TremixTaskerAppSharedPreferences preferences = TremixTaskerAppSharedPreferences.build(context, false);
+                // If failed to get app preferences, then likely app is not installed, so do not show its preference
+                termuxTaskerPreference.setVisible(preferences != null);
+            }
+        }
+
+        private void configureTremixWidgetPreference(@NonNull Context context) {
+            Preference termuxWidgetPreference = findPreference("termux_widget");
+            if (termuxWidgetPreference != null) {
+                TremixWidgetAppSharedPreferences preferences = TremixWidgetAppSharedPreferences.build(context, false);
+                // If failed to get app preferences, then likely app is not installed, so do not show its preference
+                termuxWidgetPreference.setVisible(preferences != null);
+            }
+        }
+
+        private void configureAboutPreference(@NonNull Context context) {
+            Preference aboutPreference = findPreference("about");
+            if (aboutPreference != null) {
+                aboutPreference.setOnPreferenceClickListener(preference -> {
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            String title = "About";
+
+                            StringBuilder aboutString = new StringBuilder();
+                            aboutString.append(TremixUtils.getAppInfoMarkdownString(context, TremixUtils.AppInfoMode.TERMUX_AND_PLUGIN_PACKAGES));
+                            aboutString.append("\n\n").append(AndroidUtils.getDeviceInfoMarkdownString(context, true));
+                            aboutString.append("\n\n").append(TremixUtils.getImportantLinksMarkdownString(context));
+
+                            String userActionName = UserAction.ABOUT.getName();
+
+                            ReportInfo reportInfo = new ReportInfo(userActionName,
+                                TremixConstants.TERMUX_APP.TERMUX_SETTINGS_ACTIVITY_NAME, title);
+                            reportInfo.setReportString(aboutString.toString());
+                            reportInfo.setReportSaveFileLabelAndPath(userActionName,
+                                Environment.getExternalStorageDirectory() + "/" +
+                                    FileUtils.sanitizeFileName(TremixConstants.TERMUX_APP_NAME + "-" + userActionName + ".log", true, true));
+
+                            ReportActivity.startReportActivity(context, reportInfo);
+                        }
+                    }.start();
+
+                    return true;
+                });
+            }
+        }
+
+        private void configureDonatePreference(@NonNull Context context) {
+            Preference donatePreference = findPreference("donate");
+            if (donatePreference != null) {
+                String signingCertificateSHA256Digest = PackageUtils.getSigningCertificateSHA256DigestForPackage(context);
+                if (signingCertificateSHA256Digest != null) {
+                    // If APK is a Google Playstore release, then do not show the donation link
+                    // since Tremix isn't exempted from the playstore policy donation links restriction
+                    // Check Fund solicitations: https://pay.google.com/intl/en_in/about/policy/
+                    String apkRelease = TremixUtils.getAPKRelease(signingCertificateSHA256Digest);
+                    if (apkRelease == null || apkRelease.equals(TremixConstants.APK_RELEASE_GOOGLE_PLAYSTORE_SIGNING_CERTIFICATE_SHA256_DIGEST)) {
+                        donatePreference.setVisible(false);
+                        return;
+                    } else {
+                        donatePreference.setVisible(true);
+                    }
+                }
+
+                donatePreference.setOnPreferenceClickListener(preference -> {
+                    ShareUtils.openUrl(context, TremixConstants.TERMUX_DONATE_URL);
+                    return true;
+                });
+            }
+        }
+    }
+
+}
