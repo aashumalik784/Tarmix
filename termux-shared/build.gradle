@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    namespace = "com.termix.shared"
+    namespace = "com.tremix.shared"
 
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
     ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
@@ -28,7 +28,7 @@ android {
 
         implementation project(":terminal-view")
 
-        implementation "com.termix:termux-am-library:v2.0.0"
+        implementation "com.tremix:termux-am-library:v2.0.0"
     }
 
     defaultConfig {
@@ -90,7 +90,7 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.default
-                groupId = 'com.termix'
+                groupId = 'com.tremix'
                 artifactId = 'termux-shared'
                 version = '0.118.0'
                 artifact(sourceJar)
