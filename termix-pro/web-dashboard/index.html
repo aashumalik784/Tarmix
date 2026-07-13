@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TermiX-Pro Dashboard</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; }
+        h1 { border-bottom: 2px solid #0f0; padding-bottom: 10px; text-align: center; }
+        h2 { color: #fff; border-left: 5px solid #0f0; padding-left: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+        .btn { padding: 12px; border: 1px solid #0f0; color: #0f0; text-decoration: none; text-align: center; }
+        .btn:hover { background: #0f0; color: #000; }
+        .btn.installed { background: #001100; }
+        .btn.limited { border-color: #ff0; color: #ff0; background: #221800; }
+        .note { color: #999; font-size: 0.85em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>TermiX-Pro Dashboard</h1>
+    <div class="status">
+        <strong>System Status:</strong> Operational<br>
+        <strong>Tools Installed:</strong> 13/14 Fully Working, 1 Limited (Docker)
+    </div>
+    <h2>Programming Languages</h2>
+    <div class="grid">
+        <a href="/cgi-bin/execute.sh?tool=python" class="btn installed">Python</a>
+        <a href="/cgi-bin/execute.sh?tool=java" class="btn installed">Java</a>
+        <a href="/cgi-bin/execute.sh?tool=g++" class="btn installed">C++</a>
+        <a href="/cgi-bin/execute.sh?tool=node" class="btn installed">Node.js</a>
+        <a href="/cgi-bin/execute.sh?tool=php" class="btn installed">PHP</a>
+        <a href="/cgi-bin/execute.sh?tool=go" class="btn installed">Go</a>
+        <a href="/cgi-bin/execute.sh?tool=rust" class="btn installed">Rust</a>
+        <a href="/cgi-bin/execute.sh?tool=ruby" class="btn installed">Ruby</a>
+        <a href="/cgi-bin/execute.sh?tool=kotlin" class="btn installed">Kotlin</a>
+        <a href="/cgi-bin/execute.sh?tool=dart" class="btn installed">Dart</a>
+    </div>
+    <h2>Web & Server</h2>
+    <div class="grid">
+        <a href="/cgi-bin/execute.sh?tool=nginx" class="btn installed">Nginx</a>
+        <a href="/cgi-bin/execute.sh?tool=docker" class="btn limited">Docker (CLI only)</a>
+    </div>
+    <p class="note">Docker daemon cannot run inside PRoot (no kernel cgroups/namespaces support). CLI is available for reference only.</p>
+    <h2>Databases</h2>
+    <div class="grid">
+        <a href="/cgi-bin/execute.sh?tool=mariadb" class="btn installed">MariaDB</a>
+        <a href="/cgi-bin/execute.sh?tool=postgresql" class="btn installed">PostgreSQL</a>
+    </div>
+</body>
+</html>
