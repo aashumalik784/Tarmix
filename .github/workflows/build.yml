@@ -1,4 +1,4 @@
-name: Build TermiX APK
+name: Build Tremix APK
 
 on:
   push:
@@ -9,26 +9,66 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-    
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
         distribution: 'temurin'
-        cache: gradle
-    
-    - name: Grant execute permission
+        java-version: '17'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    
-    - name: Build APK
-      run: ./gradlew assembleDebug
-    
+
+    - name: Build Release APK
+      run:./gradlew assembleRelease
+
+    - name: Rename APK
+      run: mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/Tremix-v0.118.0-universal.apk
+
+    - name: Sign APK
+      uses: r0adkll/sign-android-release@v1
+      id: sign_app
+      with:
+        releaseDirectory: app/build/outputs/apk/release
+        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+        alias: ${{ secrets.ALIAS }}
+        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: "34.0.0"
+
+    - name: Rename Signed APK
+      run: mv ${{steps.sign_app.outputs.signedReleaseFile}} app/build/outputs/apk/release/Tremix-v0.118.0-signed.apk
+
     - name: Create Release
       uses: softprops/action-gh-release@v2
-      if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: app/build/outputs/apk/debug/*.apk
+        files: |
+          app/build/outputs/apk/release/Tremix-v0.118.0-universal.apk
+          app/build/outputs/apk/release/Tremix-v0.118.0-signed.apk
+        name: Tremix v0.118.0
+        tag_name: ${{ github.ref_name }}
+        body: |
+          ### Tremix v0.118.0
+
+          Original Termux fork with custom branding.
+
+          **Package:** `com.tremix`
+          **Version:** `0.118.0`
+
+          **Downloads:**
+          - `Tremix-v0.118.0-universal.apk` - Unsigned APK
+          - `Tremix-v0.118.0-signed.apk` - Signed APK [Recommended]
+
+          Based on Termux v0.118.0
+        draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
