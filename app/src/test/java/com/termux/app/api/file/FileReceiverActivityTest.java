@@ -1,6 +1,6 @@
-package com.termix.app.api.file;
+package com.tremix.app.api.file;
 
-import com.termix.app.api.file.FileReceiverActivity;
+import com.tremix.app.api.file.FileReceiverActivity;
 
 import org.junit.Assert;
 import org.junit.Test;

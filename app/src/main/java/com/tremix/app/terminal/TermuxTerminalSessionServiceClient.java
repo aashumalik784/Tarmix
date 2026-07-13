@@ -1,14 +1,14 @@
-package com.termix.app.terminal;
+package com.tremix.app.terminal;
 
 import android.app.Service;
 
 import androidx.annotation.NonNull;
 
-import com.termix.app.TremixService;
-import com.termix.shared.termux.shell.command.runner.terminal.TremixSession;
-import com.termix.shared.termux.terminal.TremixTerminalSessionClientBase;
-import com.termix.terminal.TerminalSession;
-import com.termix.terminal.TerminalSessionClient;
+import com.tremix.app.TremixService;
+import com.tremix.shared.termux.shell.command.runner.terminal.TremixSession;
+import com.tremix.shared.termux.terminal.TremixTerminalSessionClientBase;
+import com.tremix.terminal.TerminalSession;
+import com.tremix.terminal.TerminalSessionClient;
 
 /** The {@link TerminalSessionClient} implementation that may require a {@link Service} for its interface methods. */
 public class TremixTerminalSessionServiceClient extends TremixTerminalSessionClientBase {

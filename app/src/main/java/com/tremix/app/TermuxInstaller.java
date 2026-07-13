@@ -1,4 +1,4 @@
-package com.termix.app;
+package com.tremix.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,18 +10,18 @@ import android.system.Os;
 import android.util.Pair;
 import android.view.WindowManager;
 
-import com.termix.R;
-import com.termix.shared.file.FileUtils;
-import com.termix.shared.termux.crash.TremixCrashUtils;
-import com.termix.shared.termux.file.TremixFileUtils;
-import com.termix.shared.interact.MessageDialogUtils;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.markdown.MarkdownUtils;
-import com.termix.shared.errors.Error;
-import com.termix.shared.android.PackageUtils;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.TremixUtils;
-import com.termix.shared.termux.shell.command.environment.TremixShellEnvironment;
+import com.tremix.R;
+import com.tremix.shared.file.FileUtils;
+import com.tremix.shared.termux.crash.TremixCrashUtils;
+import com.tremix.shared.termux.file.TremixFileUtils;
+import com.tremix.shared.interact.MessageDialogUtils;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.markdown.MarkdownUtils;
+import com.tremix.shared.errors.Error;
+import com.tremix.shared.android.PackageUtils;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixUtils;
+import com.tremix.shared.termux.shell.command.environment.TremixShellEnvironment;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -33,10 +33,10 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import static com.termix.shared.termux.TremixConstants.TERMUX_PREFIX_DIR;
-import static com.termix.shared.termux.TremixConstants.TERMUX_PREFIX_DIR_PATH;
-import static com.termix.shared.termux.TremixConstants.TERMUX_STAGING_PREFIX_DIR;
-import static com.termix.shared.termux.TremixConstants.TERMUX_STAGING_PREFIX_DIR_PATH;
+import static com.tremix.shared.termux.TremixConstants.TERMUX_PREFIX_DIR;
+import static com.tremix.shared.termux.TremixConstants.TERMUX_PREFIX_DIR_PATH;
+import static com.tremix.shared.termux.TremixConstants.TERMUX_STAGING_PREFIX_DIR;
+import static com.tremix.shared.termux.TremixConstants.TERMUX_STAGING_PREFIX_DIR_PATH;
 
 /**
  * Install the Tremix bootstrap packages if necessary by following the below steps:
@@ -335,7 +335,7 @@ final class TremixInstaller {
                     // https://cs.android.com/android/platform/superproject/+/android-12.0.0_r32:frameworks/base/services/core/java/com/android/server/StorageManagerService.java;l=3796
                     // https://cs.android.com/android/platform/superproject/+/android-7.0.0_r36:frameworks/base/services/core/java/com/android/server/MountService.java;l=3053
 
-                    // Create "Android/data/com.termix" symlinks
+                    // Create "Android/data/com.tremix" symlinks
                     File[] dirs = context.getExternalFilesDirs(null);
                     if (dirs != null && dirs.length > 0) {
                         for (int i = 0; i < dirs.length; i++) {
@@ -347,7 +347,7 @@ final class TremixInstaller {
                         }
                     }
 
-                    // Create "Android/media/com.termix" symlinks
+                    // Create "Android/media/com.tremix" symlinks
                     dirs = context.getExternalMediaDirs();
                     if (dirs != null && dirs.length > 0) {
                         for (int i = 0; i < dirs.length; i++) {

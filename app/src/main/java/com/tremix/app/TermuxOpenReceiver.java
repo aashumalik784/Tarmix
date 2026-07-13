@@ -1,4 +1,4 @@
-package com.termix.app;
+package com.tremix.app;
 
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -13,13 +13,13 @@ import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
-import com.termix.shared.termux.plugins.TremixPluginUtils;
-import com.termix.shared.data.DataUtils;
-import com.termix.shared.data.IntentUtils;
-import com.termix.shared.net.uri.UriUtils;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.net.uri.UriScheme;
-import com.termix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.plugins.TremixPluginUtils;
+import com.tremix.shared.data.DataUtils;
+import com.tremix.shared.data.IntentUtils;
+import com.tremix.shared.net.uri.UriUtils;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.net.uri.UriScheme;
+import com.tremix.shared.termux.TremixConstants;
 
 import java.io.File;
 import java.io.FileNotFoundException;

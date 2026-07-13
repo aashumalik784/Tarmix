@@ -1,4 +1,4 @@
-package com.termix.app.terminal.io;
+package com.tremix.app.terminal.io;
 
 import android.annotation.SuppressLint;
 import android.view.Gravity;
@@ -7,16 +7,16 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.termix.app.TremixActivity;
-import com.termix.app.terminal.TremixTerminalSessionActivityClient;
-import com.termix.app.terminal.TremixTerminalViewClient;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.termux.extrakeys.ExtraKeysConstants;
-import com.termix.shared.termux.extrakeys.ExtraKeysInfo;
-import com.termix.shared.termux.settings.properties.TremixPropertyConstants;
-import com.termix.shared.termux.settings.properties.TremixSharedProperties;
-import com.termix.shared.termux.terminal.io.TerminalExtraKeys;
-import com.termix.view.TerminalView;
+import com.tremix.app.TremixActivity;
+import com.tremix.app.terminal.TremixTerminalSessionActivityClient;
+import com.tremix.app.terminal.TremixTerminalViewClient;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.termux.extrakeys.ExtraKeysConstants;
+import com.tremix.shared.termux.extrakeys.ExtraKeysInfo;
+import com.tremix.shared.termux.settings.properties.TremixPropertyConstants;
+import com.tremix.shared.termux.settings.properties.TremixSharedProperties;
+import com.tremix.shared.termux.terminal.io.TerminalExtraKeys;
+import com.tremix.view.TerminalView;
 
 import org.json.JSONException;
 

@@ -1,4 +1,4 @@
-package com.termix.app.terminal;
+package com.tremix.app.terminal;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -15,9 +15,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.termix.app.TremixActivity;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.view.ViewUtils;
+import com.tremix.app.TremixActivity;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.view.ViewUtils;
 
 
 /**
@@ -25,7 +25,7 @@ import com.termix.shared.view.ViewUtils;
  * set by {@link TremixTerminalViewClient#setSoftKeyboardState(boolean, boolean)} to automatically
  * resize the view and push the terminal up when soft keyboard is opened. However, this does not
  * always work properly. When `enforce-char-based-input=true` is set in `termux.properties`
- * and {@link com.termix.view.TerminalView#onCreateInputConnection(EditorInfo)} sets the inputType
+ * and {@link com.tremix.view.TerminalView#onCreateInputConnection(EditorInfo)} sets the inputType
  * to `InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS`
  * instead of the default `InputType.TYPE_NULL` for termux, some keyboards may still show suggestions.
  * Gboard does too, but only when text is copied and clipboard suggestions **and** number keys row
@@ -45,7 +45,7 @@ import com.termix.shared.view.ViewUtils;
  * where `keyboard_height = screen_height - height_for_app - header_height` (62 is a hardcoded value in Gboard source code and may be a version number)
  * So this may in fact be due to Gboard but https://stackoverflow.com/questions/57567272 suggests
  * otherwise. Another similar report https://stackoverflow.com/questions/66761661.
- * Also check https://github.com.termix/termux-app/issues/1539.
+ * Also check https://github.com.tremix/termux-app/issues/1539.
  *
  * This overlap may happen even without `enforce-char-based-input=true` for keyboards with extended layouts
  * like number row, etc.

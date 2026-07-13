@@ -1,4 +1,4 @@
-package com.termix.app.fragments.settings;
+package com.tremix.app.fragments.settings;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import androidx.preference.PreferenceDataStore;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import com.termix.R;
-import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.tremix.R;
+import com.tremix.shared.termux.settings.preferences.TremixAppSharedPreferences;
 
 @Keep
 public class TremixPreferencesFragment extends PreferenceFragmentCompat {

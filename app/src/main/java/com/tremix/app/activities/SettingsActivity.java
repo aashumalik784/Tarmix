@@ -1,4 +1,4 @@
-package com.termix.app.activities;
+package com.tremix.app.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,22 +9,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.termix.R;
-import com.termix.shared.activities.ReportActivity;
-import com.termix.shared.file.FileUtils;
-import com.termix.shared.models.ReportInfo;
-import com.termix.app.models.UserAction;
-import com.termix.shared.interact.ShareUtils;
-import com.termix.shared.android.PackageUtils;
-import com.termix.shared.termux.settings.preferences.TremixAPIAppSharedPreferences;
-import com.termix.shared.termux.settings.preferences.TremixFloatAppSharedPreferences;
-import com.termix.shared.termux.settings.preferences.TremixTaskerAppSharedPreferences;
-import com.termix.shared.termux.settings.preferences.TremixWidgetAppSharedPreferences;
-import com.termix.shared.android.AndroidUtils;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.TremixUtils;
-import com.termix.shared.activity.media.AppCompatActivityUtils;
-import com.termix.shared.theme.NightMode;
+import com.tremix.R;
+import com.tremix.shared.activities.ReportActivity;
+import com.tremix.shared.file.FileUtils;
+import com.tremix.shared.models.ReportInfo;
+import com.tremix.app.models.UserAction;
+import com.tremix.shared.interact.ShareUtils;
+import com.tremix.shared.android.PackageUtils;
+import com.tremix.shared.termux.settings.preferences.TremixAPIAppSharedPreferences;
+import com.tremix.shared.termux.settings.preferences.TremixFloatAppSharedPreferences;
+import com.tremix.shared.termux.settings.preferences.TremixTaskerAppSharedPreferences;
+import com.tremix.shared.termux.settings.preferences.TremixWidgetAppSharedPreferences;
+import com.tremix.shared.android.AndroidUtils;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixUtils;
+import com.tremix.shared.activity.media.AppCompatActivityUtils;
+import com.tremix.shared.theme.NightMode;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -42,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .commit();
         }
 
-        AppCompatActivityUtils.setToolbar(this, com.termix.shared.R.id.toolbar);
+        AppCompatActivityUtils.setToolbar(this, com.tremix.shared.R.id.toolbar);
         AppCompatActivityUtils.setShowBackButtonInActionBar(this, true);
     }
 

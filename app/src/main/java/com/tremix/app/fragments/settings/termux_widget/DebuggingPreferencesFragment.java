@@ -1,4 +1,4 @@
-package com.termix.app.fragments.settings.termux_widget;
+package com.tremix.app.fragments.settings.termux_widget;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import androidx.preference.PreferenceDataStore;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import com.termix.R;
-import com.termix.shared.termux.settings.preferences.TremixWidgetAppSharedPreferences;
+import com.tremix.R;
+import com.tremix.shared.termux.settings.preferences.TremixWidgetAppSharedPreferences;
 
 @Keep
 public class DebuggingPreferencesFragment extends PreferenceFragmentCompat {
@@ -40,7 +40,7 @@ public class DebuggingPreferencesFragment extends PreferenceFragmentCompat {
             TremixWidgetAppSharedPreferences preferences = TremixWidgetAppSharedPreferences.build(context, true);
             if (preferences == null) return;
 
-            com.termix.app.fragments.settings.termux.DebuggingPreferencesFragment.
+            com.tremix.app.fragments.settings.termux.DebuggingPreferencesFragment.
                 setLogLevelListPreferenceData(logLevelListPreference, context, preferences.getLogLevel(true));
             loggingCategory.addPreference(logLevelListPreference);
         }

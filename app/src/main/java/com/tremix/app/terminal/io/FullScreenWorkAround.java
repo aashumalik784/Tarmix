@@ -1,10 +1,10 @@
-package com.termix.app.terminal.io;
+package com.tremix.app.terminal.io;
 
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.termix.app.TremixActivity;
+import com.tremix.app.TremixActivity;
 
 /**
  * Work around for fullscreen mode in Tremix to fix ExtraKeysView not being visible.

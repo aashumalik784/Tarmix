@@ -1,1 +1,6 @@
-include ':app', ':tremix-shared', ':tremix-emulator', ':tremix-view'
+rootProject.name = 'Tremix'
+include ':app'
+include ':TremixAm'
+include ':TremixShared'
+include ':TremixEmulator'
+include ':TremixView'

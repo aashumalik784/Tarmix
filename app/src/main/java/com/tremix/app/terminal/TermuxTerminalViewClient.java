@@ -1,4 +1,4 @@
-package com.termix.app.terminal;
+package com.tremix.app.terminal;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -17,32 +17,32 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.termix.R;
-import com.termix.app.TremixActivity;
-import com.termix.shared.file.FileUtils;
-import com.termix.shared.interact.MessageDialogUtils;
-import com.termix.shared.interact.ShareUtils;
-import com.termix.shared.shell.ShellUtils;
-import com.termix.shared.termux.TremixBootstrap;
-import com.termix.shared.termux.terminal.TremixTerminalViewClientBase;
-import com.termix.shared.termux.extrakeys.SpecialButton;
-import com.termix.shared.android.AndroidUtils;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.activities.ReportActivity;
-import com.termix.shared.models.ReportInfo;
-import com.termix.app.models.UserAction;
-import com.termix.app.terminal.io.KeyboardShortcut;
-import com.termix.shared.termux.settings.properties.TremixPropertyConstants;
-import com.termix.shared.data.DataUtils;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.markdown.MarkdownUtils;
-import com.termix.shared.termux.TremixUtils;
-import com.termix.shared.termux.data.TremixUrlUtils;
-import com.termix.shared.view.KeyboardUtils;
-import com.termix.shared.view.ViewUtils;
-import com.termix.terminal.KeyHandler;
-import com.termix.terminal.TerminalEmulator;
-import com.termix.terminal.TerminalSession;
+import com.tremix.R;
+import com.tremix.app.TremixActivity;
+import com.tremix.shared.file.FileUtils;
+import com.tremix.shared.interact.MessageDialogUtils;
+import com.tremix.shared.interact.ShareUtils;
+import com.tremix.shared.shell.ShellUtils;
+import com.tremix.shared.termux.TremixBootstrap;
+import com.tremix.shared.termux.terminal.TremixTerminalViewClientBase;
+import com.tremix.shared.termux.extrakeys.SpecialButton;
+import com.tremix.shared.android.AndroidUtils;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.activities.ReportActivity;
+import com.tremix.shared.models.ReportInfo;
+import com.tremix.app.models.UserAction;
+import com.tremix.app.terminal.io.KeyboardShortcut;
+import com.tremix.shared.termux.settings.properties.TremixPropertyConstants;
+import com.tremix.shared.data.DataUtils;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.markdown.MarkdownUtils;
+import com.tremix.shared.termux.TremixUtils;
+import com.tremix.shared.termux.data.TremixUrlUtils;
+import com.tremix.shared.view.KeyboardUtils;
+import com.tremix.shared.view.ViewUtils;
+import com.tremix.terminal.KeyHandler;
+import com.tremix.terminal.TerminalEmulator;
+import com.tremix.terminal.TerminalSession;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -152,7 +152,7 @@ public class TremixTerminalViewClient extends TremixTerminalViewClientBase {
     }
 
     /**
-     * Should be called when {@link com.termix.view.TerminalView#mEmulator} is set
+     * Should be called when {@link com.tremix.view.TerminalView#mEmulator} is set
      */
     @Override
     public void onEmulatorSet() {
@@ -271,7 +271,7 @@ public class TremixTerminalViewClient extends TremixTerminalViewClientBase {
                 doPaste();
             } else if (unicodeChar == '+' || e.getUnicodeChar(KeyEvent.META_SHIFT_ON) == '+') {
                 // We also check for the shifted char here since shift may be required to produce '+',
-                // see https://github.com.termix/termux-api/issues/2
+                // see https://github.com.tremix/termux-api/issues/2
                 changeFontSize(true);
             } else if (unicodeChar == '-') {
                 changeFontSize(false);
@@ -678,7 +678,7 @@ public class TremixTerminalViewClient extends TremixTerminalViewClientBase {
         String transcriptText = ShellUtils.getTerminalSessionTranscriptText(session, false, true);
         if (transcriptText == null) return;
 
-        // See https://github.com.termix/termux-app/issues/1166.
+        // See https://github.com.tremix/termux-app/issues/1166.
         transcriptText = DataUtils.getTruncatedCommandOutput(transcriptText, DataUtils.TRANSACTION_SIZE_LIMIT_IN_BYTES, false, true, false).trim();
         ShareUtils.shareText(mActivity, mActivity.getString(R.string.title_share_transcript),
             transcriptText, mActivity.getString(R.string.title_share_transcript_with));
@@ -735,8 +735,8 @@ public class TremixTerminalViewClient extends TremixTerminalViewClientBase {
 
         MessageDialogUtils.showMessage(mActivity, TremixConstants.TERMUX_APP_NAME + " Report Issue",
             mActivity.getString(R.string.msg_add_termux_debug_info),
-            mActivity.getString(com.termix.shared.R.string.action_yes), (dialog, which) -> reportIssueFromTranscript(transcriptText, true),
-            mActivity.getString(com.termix.shared.R.string.action_no), (dialog, which) -> reportIssueFromTranscript(transcriptText, false),
+            mActivity.getString(com.tremix.shared.R.string.action_yes), (dialog, which) -> reportIssueFromTranscript(transcriptText, true),
+            mActivity.getString(com.tremix.shared.R.string.action_no), (dialog, which) -> reportIssueFromTranscript(transcriptText, false),
             null);
     }
 

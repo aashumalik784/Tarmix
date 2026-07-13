@@ -1,4 +1,4 @@
-package com.termix.app.event;
+package com.tremix.app.event;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,12 +9,12 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termix.shared.data.IntentUtils;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.termux.TremixUtils;
-import com.termix.shared.termux.file.TremixFileUtils;
-import com.termix.shared.termux.shell.command.environment.TremixShellEnvironment;
-import com.termix.shared.termux.shell.TremixShellManager;
+import com.tremix.shared.data.IntentUtils;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.termux.TremixUtils;
+import com.tremix.shared.termux.file.TremixFileUtils;
+import com.tremix.shared.termux.shell.command.environment.TremixShellEnvironment;
+import com.tremix.shared.termux.shell.TremixShellManager;
 
 public class SystemEventReceiver extends BroadcastReceiver {
 

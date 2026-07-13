@@ -1,4 +1,4 @@
-package com.termix.app;
+package com.tremix.app;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,29 +9,29 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 
-import com.termix.R;
-import com.termix.shared.data.DataUtils;
-import com.termix.shared.data.IntentUtils;
-import com.termix.shared.termux.plugins.TremixPluginUtils;
-import com.termix.shared.termux.file.TremixFileUtils;
-import com.termix.shared.file.filesystem.FileType;
-import com.termix.shared.errors.Errno;
-import com.termix.shared.errors.Error;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP.RUN_COMMAND_SERVICE;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
-import com.termix.shared.file.FileUtils;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.notification.NotificationUtils;
-import com.termix.shared.shell.command.ExecutionCommand;
-import com.termix.shared.shell.command.ExecutionCommand.Runner;
+import com.tremix.R;
+import com.tremix.shared.data.DataUtils;
+import com.tremix.shared.data.IntentUtils;
+import com.tremix.shared.termux.plugins.TremixPluginUtils;
+import com.tremix.shared.termux.file.TremixFileUtils;
+import com.tremix.shared.file.filesystem.FileType;
+import com.tremix.shared.errors.Errno;
+import com.tremix.shared.errors.Error;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP.RUN_COMMAND_SERVICE;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
+import com.tremix.shared.file.FileUtils;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.notification.NotificationUtils;
+import com.tremix.shared.shell.command.ExecutionCommand;
+import com.tremix.shared.shell.command.ExecutionCommand.Runner;
 
 /**
  * A service that receives {@link RUN_COMMAND_SERVICE#ACTION_RUN_COMMAND} intent from third party apps and
  * plugins that contains info on command execution and forwards the extras to {@link TremixService}
  * for the actual execution.
  *
- * Check https://github.com.termix/termux-app/wiki/RUN_COMMAND-Intent for more info.
+ * Check https://github.com.tremix/termux-app/wiki/RUN_COMMAND-Intent for more info.
  */
 public class RunCommandService extends Service {
 

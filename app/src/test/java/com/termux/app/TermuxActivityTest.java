@@ -1,6 +1,6 @@
-package com.termix.app;
+package com.tremix.app;
 
-import com.termix.shared.termux.data.TremixUrlUtils;
+import com.tremix.shared.termux.data.TremixUrlUtils;
 
 import org.junit.Assert;
 import org.junit.Test;

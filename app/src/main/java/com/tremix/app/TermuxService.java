@@ -1,4 +1,4 @@
-package com.termix.app;
+package com.tremix.app;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -18,36 +18,36 @@ import android.os.PowerManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termix.R;
-import com.termix.app.event.SystemEventReceiver;
-import com.termix.app.terminal.TremixTerminalSessionActivityClient;
-import com.termix.app.terminal.TremixTerminalSessionServiceClient;
-import com.termix.shared.termux.plugins.TremixPluginUtils;
-import com.termix.shared.data.IntentUtils;
-import com.termix.shared.net.uri.UriUtils;
-import com.termix.shared.errors.Errno;
-import com.termix.shared.shell.ShellUtils;
-import com.termix.shared.shell.command.runner.app.AppShell;
-import com.termix.shared.termux.settings.properties.TremixAppSharedProperties;
-import com.termix.shared.termux.shell.command.environment.TremixShellEnvironment;
-import com.termix.shared.termux.shell.TremixShellUtils;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_ACTIVITY;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
-import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
-import com.termix.shared.termux.shell.TremixShellManager;
-import com.termix.shared.termux.shell.command.runner.terminal.TremixSession;
-import com.termix.shared.termux.terminal.TremixTerminalSessionClientBase;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.notification.NotificationUtils;
-import com.termix.shared.android.PermissionUtils;
-import com.termix.shared.data.DataUtils;
-import com.termix.shared.shell.command.ExecutionCommand;
-import com.termix.shared.shell.command.ExecutionCommand.Runner;
-import com.termix.shared.shell.command.ExecutionCommand.ShellCreateMode;
-import com.termix.terminal.TerminalEmulator;
-import com.termix.terminal.TerminalSession;
-import com.termix.terminal.TerminalSessionClient;
+import com.tremix.R;
+import com.tremix.app.event.SystemEventReceiver;
+import com.tremix.app.terminal.TremixTerminalSessionActivityClient;
+import com.tremix.app.terminal.TremixTerminalSessionServiceClient;
+import com.tremix.shared.termux.plugins.TremixPluginUtils;
+import com.tremix.shared.data.IntentUtils;
+import com.tremix.shared.net.uri.UriUtils;
+import com.tremix.shared.errors.Errno;
+import com.tremix.shared.shell.ShellUtils;
+import com.tremix.shared.shell.command.runner.app.AppShell;
+import com.tremix.shared.termux.settings.properties.TremixAppSharedProperties;
+import com.tremix.shared.termux.shell.command.environment.TremixShellEnvironment;
+import com.tremix.shared.termux.shell.TremixShellUtils;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_ACTIVITY;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
+import com.tremix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.tremix.shared.termux.shell.TremixShellManager;
+import com.tremix.shared.termux.shell.command.runner.terminal.TremixSession;
+import com.tremix.shared.termux.terminal.TremixTerminalSessionClientBase;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.notification.NotificationUtils;
+import com.tremix.shared.android.PermissionUtils;
+import com.tremix.shared.data.DataUtils;
+import com.tremix.shared.shell.command.ExecutionCommand;
+import com.tremix.shared.shell.command.ExecutionCommand.Runner;
+import com.tremix.shared.shell.command.ExecutionCommand.ShellCreateMode;
+import com.tremix.terminal.TerminalEmulator;
+import com.tremix.terminal.TerminalSession;
+import com.tremix.terminal.TerminalSessionClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -291,7 +291,7 @@ public final class TremixService extends Service implements AppShell.AppShellCli
         for (int i = 0; i < pendingPluginExecutionCommands.size(); i++) {
             ExecutionCommand executionCommand = pendingPluginExecutionCommands.get(i);
             if (!executionCommand.shouldNotProcessResults() && executionCommand.isPluginExecutionCommandWithPendingResult()) {
-                if (executionCommand.setStateFailed(Errno.ERRNO_CANCELLED.getCode(), this.getString(com.termix.shared.R.string.error_execution_cancelled))) {
+                if (executionCommand.setStateFailed(Errno.ERRNO_CANCELLED.getCode(), this.getString(com.tremix.shared.R.string.error_execution_cancelled))) {
                     TremixPluginUtils.processPluginExecutionCommandResult(this, LOG_TAG, executionCommand);
                 }
             }

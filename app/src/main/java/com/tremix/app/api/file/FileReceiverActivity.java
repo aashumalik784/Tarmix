@@ -1,4 +1,4 @@
-package com.termix.app.api.file;
+package com.tremix.app.api.file;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,21 +10,21 @@ import android.util.Patterns;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.termix.R;
-import com.termix.shared.android.PackageUtils;
-import com.termix.shared.data.DataUtils;
-import com.termix.shared.data.IntentUtils;
-import com.termix.shared.net.uri.UriUtils;
-import com.termix.shared.interact.MessageDialogUtils;
-import com.termix.shared.net.uri.UriScheme;
-import com.termix.shared.termux.interact.TextInputDialogUtils;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
-import com.termix.app.TremixService;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.termux.settings.properties.TremixAppSharedProperties;
-import com.termix.shared.termux.settings.properties.TremixPropertyConstants;
+import com.tremix.R;
+import com.tremix.shared.android.PackageUtils;
+import com.tremix.shared.data.DataUtils;
+import com.tremix.shared.data.IntentUtils;
+import com.tremix.shared.net.uri.UriUtils;
+import com.tremix.shared.interact.MessageDialogUtils;
+import com.tremix.shared.net.uri.UriScheme;
+import com.tremix.shared.termux.interact.TextInputDialogUtils;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_SERVICE;
+import com.tremix.app.TremixService;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.termux.settings.properties.TremixAppSharedProperties;
+import com.tremix.shared.termux.settings.properties.TremixPropertyConstants;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

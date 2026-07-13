@@ -1,4 +1,4 @@
-package com.termix.app.terminal;
+package com.tremix.app.terminal;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,21 +16,21 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.termix.R;
-import com.termix.shared.interact.ShareUtils;
-import com.termix.shared.termux.shell.command.runner.terminal.TremixSession;
-import com.termix.shared.termux.interact.TextInputDialogUtils;
-import com.termix.app.TremixActivity;
-import com.termix.shared.termux.terminal.TremixTerminalSessionClientBase;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.app.TremixService;
-import com.termix.shared.termux.settings.properties.TremixPropertyConstants;
-import com.termix.shared.termux.terminal.io.BellHandler;
-import com.termix.shared.logger.Logger;
-import com.termix.terminal.TerminalColors;
-import com.termix.terminal.TerminalSession;
-import com.termix.terminal.TerminalSessionClient;
-import com.termix.terminal.TextStyle;
+import com.tremix.R;
+import com.tremix.shared.interact.ShareUtils;
+import com.tremix.shared.termux.shell.command.runner.terminal.TremixSession;
+import com.tremix.shared.termux.interact.TextInputDialogUtils;
+import com.tremix.app.TremixActivity;
+import com.tremix.shared.termux.terminal.TremixTerminalSessionClientBase;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.app.TremixService;
+import com.tremix.shared.termux.settings.properties.TremixPropertyConstants;
+import com.tremix.shared.termux.terminal.io.BellHandler;
+import com.tremix.shared.logger.Logger;
+import com.tremix.terminal.TerminalColors;
+import com.tremix.terminal.TerminalSession;
+import com.tremix.terminal.TerminalSessionClient;
+import com.tremix.terminal.TextStyle;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -271,9 +271,9 @@ public class TremixTerminalSessionActivityClient extends TremixTerminalSessionCl
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION).build()).build();
 
             try {
-                mBellSoundId = mBellSoundPool.load(mActivity, com.termix.shared.R.raw.bell, 1);
+                mBellSoundId = mBellSoundPool.load(mActivity, com.tremix.shared.R.raw.bell, 1);
             } catch (Exception e){
-                // Catch java.lang.RuntimeException: Unable to resume activity {com.termix/com.termix.app.TremixActivity}: android.content.res.Resources$NotFoundException: File res/raw/bell.ogg from drawable resource ID
+                // Catch java.lang.RuntimeException: Unable to resume activity {com.tremix/com.tremix.app.TremixActivity}: android.content.res.Resources$NotFoundException: File res/raw/bell.ogg from drawable resource ID
                 Logger.logStackTraceWithMessage(LOG_TAG, "Failed to load bell sound pool", e);
             }
         }

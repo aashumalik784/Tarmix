@@ -1,4 +1,4 @@
-package com.termix.app.terminal;
+package com.tremix.app.terminal;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -18,12 +18,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.termix.R;
-import com.termix.app.TremixActivity;
-import com.termix.shared.termux.shell.command.runner.terminal.TremixSession;
-import com.termix.shared.theme.NightMode;
-import com.termix.shared.theme.ThemeUtils;
-import com.termix.terminal.TerminalSession;
+import com.tremix.R;
+import com.tremix.app.TremixActivity;
+import com.tremix.shared.termux.shell.command.runner.terminal.TremixSession;
+import com.tremix.shared.theme.NightMode;
+import com.tremix.shared.theme.ThemeUtils;
+import com.tremix.terminal.TerminalSession;
 
 import java.util.List;
 

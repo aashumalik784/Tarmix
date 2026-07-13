@@ -1,21 +1,21 @@
-package com.termix.app;
+package com.tremix.app;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.termix.BuildConfig;
-import com.termix.shared.errors.Error;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.termux.TremixBootstrap;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.crash.TremixCrashUtils;
-import com.termix.shared.termux.file.TremixFileUtils;
-import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
-import com.termix.shared.termux.settings.properties.TremixAppSharedProperties;
-import com.termix.shared.termux.shell.command.environment.TremixShellEnvironment;
-import com.termix.shared.termux.shell.am.TremixAmSocketServer;
-import com.termix.shared.termux.shell.TremixShellManager;
-import com.termix.shared.termux.theme.TremixThemeUtils;
+import com.tremix.BuildConfig;
+import com.tremix.shared.errors.Error;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.termux.TremixBootstrap;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.crash.TremixCrashUtils;
+import com.tremix.shared.termux.file.TremixFileUtils;
+import com.tremix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.tremix.shared.termux.settings.properties.TremixAppSharedProperties;
+import com.tremix.shared.termux.shell.command.environment.TremixShellEnvironment;
+import com.tremix.shared.termux.shell.am.TremixAmSocketServer;
+import com.tremix.shared.termux.shell.TremixShellManager;
+import com.tremix.shared.termux.theme.TremixThemeUtils;
 
 public class TremixApplication extends Application {
 

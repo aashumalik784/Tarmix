@@ -1,4 +1,4 @@
-package com.termix.app.activities;
+package com.tremix.app.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.termix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixConstants;
 
 /** Basic embedded browser for viewing help pages. */
 public final class HelpActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.termix.app.models;
+package com.tremix.app.models;
 
 public enum UserAction {
 

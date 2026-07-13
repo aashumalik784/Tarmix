@@ -1,4 +1,4 @@
-package com.termix.app;
+package com.tremix.app;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -26,38 +26,38 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.termix.R;
-import com.termix.app.api.file.FileReceiverActivity;
-import com.termix.app.terminal.TremixActivityRootView;
-import com.termix.app.terminal.TremixTerminalSessionActivityClient;
-import com.termix.app.terminal.io.TremixTerminalExtraKeys;
-import com.termix.shared.activities.ReportActivity;
-import com.termix.shared.activity.ActivityUtils;
-import com.termix.shared.activity.media.AppCompatActivityUtils;
-import com.termix.shared.data.IntentUtils;
-import com.termix.shared.android.PermissionUtils;
-import com.termix.shared.data.DataUtils;
-import com.termix.shared.termux.TremixConstants;
-import com.termix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_ACTIVITY;
-import com.termix.app.activities.HelpActivity;
-import com.termix.app.activities.SettingsActivity;
-import com.termix.shared.termux.crash.TremixCrashUtils;
-import com.termix.shared.termux.settings.preferences.TremixAppSharedPreferences;
-import com.termix.app.terminal.TremixSessionsListViewController;
-import com.termix.app.terminal.io.TerminalToolbarViewPager;
-import com.termix.app.terminal.TremixTerminalViewClient;
-import com.termix.shared.termux.extrakeys.ExtraKeysView;
-import com.termix.shared.termux.interact.TextInputDialogUtils;
-import com.termix.shared.logger.Logger;
-import com.termix.shared.termux.TremixUtils;
-import com.termix.shared.termux.settings.properties.TremixAppSharedProperties;
-import com.termix.shared.termux.theme.TremixThemeUtils;
-import com.termix.shared.theme.NightMode;
-import com.termix.shared.view.ViewUtils;
-import com.termix.terminal.TerminalSession;
-import com.termix.terminal.TerminalSessionClient;
-import com.termix.view.TerminalView;
-import com.termix.view.TerminalViewClient;
+import com.tremix.R;
+import com.tremix.app.api.file.FileReceiverActivity;
+import com.tremix.app.terminal.TremixActivityRootView;
+import com.tremix.app.terminal.TremixTerminalSessionActivityClient;
+import com.tremix.app.terminal.io.TremixTerminalExtraKeys;
+import com.tremix.shared.activities.ReportActivity;
+import com.tremix.shared.activity.ActivityUtils;
+import com.tremix.shared.activity.media.AppCompatActivityUtils;
+import com.tremix.shared.data.IntentUtils;
+import com.tremix.shared.android.PermissionUtils;
+import com.tremix.shared.data.DataUtils;
+import com.tremix.shared.termux.TremixConstants;
+import com.tremix.shared.termux.TremixConstants.TERMUX_APP.TERMUX_ACTIVITY;
+import com.tremix.app.activities.HelpActivity;
+import com.tremix.app.activities.SettingsActivity;
+import com.tremix.shared.termux.crash.TremixCrashUtils;
+import com.tremix.shared.termux.settings.preferences.TremixAppSharedPreferences;
+import com.tremix.app.terminal.TremixSessionsListViewController;
+import com.tremix.app.terminal.io.TerminalToolbarViewPager;
+import com.tremix.app.terminal.TremixTerminalViewClient;
+import com.tremix.shared.termux.extrakeys.ExtraKeysView;
+import com.tremix.shared.termux.interact.TextInputDialogUtils;
+import com.tremix.shared.logger.Logger;
+import com.tremix.shared.termux.TremixUtils;
+import com.tremix.shared.termux.settings.properties.TremixAppSharedProperties;
+import com.tremix.shared.termux.theme.TremixThemeUtils;
+import com.tremix.shared.theme.NightMode;
+import com.tremix.shared.view.ViewUtils;
+import com.tremix.terminal.TerminalSession;
+import com.tremix.terminal.TerminalSessionClient;
+import com.tremix.view.TerminalView;
+import com.tremix.view.TerminalViewClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -778,13 +778,13 @@ public final class TremixActivity extends AppCompatActivity implements ServiceCo
                     TremixActivity.this, requestCode, !isPermissionCallback)) {
                     if (isPermissionCallback)
                         Logger.logInfoAndShowToast(TremixActivity.this, LOG_TAG,
-                            getString(com.termix.shared.R.string.msg_storage_permission_granted_on_request));
+                            getString(com.tremix.shared.R.string.msg_storage_permission_granted_on_request));
 
                     TremixInstaller.setupStorageSymlinks(TremixActivity.this);
                 } else {
                     if (isPermissionCallback)
                         Logger.logInfoAndShowToast(TremixActivity.this, LOG_TAG,
-                            getString(com.termix.shared.R.string.msg_storage_permission_not_granted_on_request));
+                            getString(com.tremix.shared.R.string.msg_storage_permission_not_granted_on_request));
                 }
             }
         }.start();
