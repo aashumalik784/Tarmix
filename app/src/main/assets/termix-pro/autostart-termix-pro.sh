@@ -89,7 +89,7 @@ else
         rm -f dartsdk-linux-arm64-release.zip
         ln -sf /opt/dart-sdk/bin/dart /usr/local/bin/dart 2>/dev/null
     "
-    tar --use-compress-program=zstd -cf "$LOCAL_BACKUP" "$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu"
+    tar --use-compress-program="zstd -1 -T0" -cf "$LOCAL_BACKUP" "$PREFIX/var/lib/proot-distro/containers/ubuntu/rootfs"
     echo -e "${GREEN}✅ Backup created!${NC}"
 fi
 
