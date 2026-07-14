@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/data/data/com.termux/files/usr/bin/bash
 # TermiX-Pro Magic Auto-Setup Script
 
 SETUP_MARKER="$HOME/.termix-pro-initialized"
@@ -10,9 +10,9 @@ if [ -f "$SETUP_MARKER" ]; then
     exit 0
 fi
 
-echo "Setting up TermiX-Pro Development Environment..."
+echo -e "Setting up TermiX-Pro Development Environment..."
 
-echo "Requesting storage permission..."
+echo -e "Requesting storage permission..."
 termux-setup-storage
 sleep 3
 
@@ -23,10 +23,10 @@ fi
 
 mkdir -p /sdcard/TermiX-Pro
 
-echo "Installing required packages..."
+echo -e "Installing required packages..."
 pkg install -y proot-distro zstd wget git unzip
 
-echo "Configuring Git automatically..."
+echo -e "Configuring Git automatically..."
 git config --global user.email "aashumalik784@users.noreply.github.com"
 git config --global user.name "Aashumalik784"
 
@@ -60,7 +60,7 @@ else
     echo "Backup created!"
 fi
 
-echo "Configuring Nginx dashboard..."
+echo -e "Configuring Nginx dashboard..."
 ROOTFS="$PREFIX/var/lib/proot-distro/containers/ubuntu/rootfs"
 mkdir -p "$ROOTFS/var/www/html"
 cat > "$ROOTFS/etc/nginx/sites-enabled/default" << 'NGINXEOF'
@@ -79,8 +79,8 @@ if [ ! -s "$ROOTFS/var/www/html/index.html" ]; then
     echo "<h1>TermiX-Pro Dashboard</h1>" > "$ROOTFS/var/www/html/index.html"
 fi
 
-echo "Starting Nginx..."
+echo -e "Starting Nginx..."
 proot-distro login ubuntu -- bash -c "service mariadb start; pkill nginx 2>/dev/null; sleep 1; nginx"
 
 touch "$SETUP_MARKER"
-echo "TermiX-Pro Setup Complete!"
+echo -e "TermiX-Pro Setup Complete!"

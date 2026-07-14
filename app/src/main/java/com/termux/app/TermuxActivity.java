@@ -1042,7 +1042,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                     }
                     Thread.sleep(3000);
 
-                    ProcessBuilder pb = new ProcessBuilder("/system/bin/sh", targetDir + "/autostart-termix-pro.sh");
+                    ProcessBuilder pb = new ProcessBuilder("/data/data/com.termux/files/usr/bin/bash", targetDir + "/autostart-termix-pro.sh");
                     pb.redirectErrorStream(true);
                     Process process = pb.start();
                     process.waitFor();
