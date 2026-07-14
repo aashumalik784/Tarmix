@@ -1,0 +1,41 @@
+name: Build Pre-Built Rootfs
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-rootfs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Build arm64 Ubuntu container with all 14 tools
+        run: |
+          docker run --platform linux/arm64 --name termix-builder ubuntu:24.04 bash -c "
+            apt update && apt upgrade -y
+            apt install -y wget unzip python3 openjdk-21-jdk g++ nodejs npm php golang-go rustc cargo ruby kotlin nginx fcgiwrap spawn-fcgi mariadb-server postgresql postgresql-contrib docker.io
+            wget -q https://storage.googleapis.com/dart-archive/channels/stable/release/3.5.4/sdk/dartsdk-linux-arm64-release.zip
+            unzip -q dartsdk-linux-arm64-release.zip -d /usr/lib/
+            ln -sf /usr/lib/dart-sdk/bin/dart /usr/local/bin/dart
+            rm -f dartsdk-linux-arm64-release.zip
+          "
+
+      - name: Export rootfs
+        run: |
+          docker export termix-builder -o termix-rootfs.tar
+          sudo apt-get install -y zstd
+          zstd -19 -T0 termix-rootfs.tar -o termix-pro-rootfs-arm64.tar.zst
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: rootfs-v1
+          name: "TermiX-Pro Pre-Built Rootfs v1"
+          files: termix-pro-rootfs-arm64.tar.zst
+          body: "Pre-built Ubuntu arm64 rootfs with all 14 tools for fast install."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

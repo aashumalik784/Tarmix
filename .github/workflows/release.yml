@@ -1,0 +1,42 @@
+name: Release APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Gradle
+        run: chmod +x gradlew && ./gradlew assembleDebug
+
+      - name: Rename APK
+        run: |
+          mkdir -p release_output
+          find app/build/outputs/apk -name "*.apk" -exec cp {} release_output/ \;
+          cd release_output
+          for f in *.apk; do
+            mv "$f" "TermiX-Pro_${{ github.ref_name }}_${f}"
+          done
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release_output/*.apk
+          name: TermiX-Pro ${{ github.ref_name }}
+          body: "Automated TermiX-Pro build for ${{ github.ref_name }}.\n\nBased on original Termux app v0.118.0 (https://github.com/termux/termux-app)."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
