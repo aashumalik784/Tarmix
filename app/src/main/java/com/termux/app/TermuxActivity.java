@@ -1049,9 +1049,6 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                             Process process = pb.start();
                         } catch (Exception e) { e.printStackTrace(); }
                     }, 15000);
-                    pb.redirectErrorStream(true);
-                    Process process = pb.start();
-                    process.waitFor();
                 }
             } catch (Exception e) {
                 Logger.logError(LOG_TAG, "TermiX-Pro initialization failed: " + e.getMessage());
