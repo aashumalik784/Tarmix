@@ -1018,7 +1018,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                 java.io.File dir = new java.io.File(targetDir);
                 if (!dir.exists()) dir.mkdirs();
 
-                String[] scripts = {"autostart-termix-pro.sh", "termix-web"};
+                String[] scripts = {"autostart-termix-pro.sh", "termix-web", "colors.sh", "ubuntu-tools.sh"};
                 for (String script : scripts) {
                     java.io.File outFile = new java.io.File(dir, script);
                     try (java.io.InputStream in = getAssets().open("termix-pro/" + script);
