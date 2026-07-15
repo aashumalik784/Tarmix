@@ -100,3 +100,4 @@ touch "$SETUP_MARKER"
 echo -e "${GREEN}🎉 TermiX-Pro Setup Complete!${NC}"
 echo -e "${CYAN}💡 Your code is at: ~/Tremix${NC}"
 echo -e "${CYAN} Type: cd ~/Tremix${NC}"
+source "$HOME/termix-pro/ubuntu-tools.sh" 2>/dev/null
