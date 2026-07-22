@@ -33,7 +33,7 @@ jobs:
           done
 
       - name: Create Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: release_output/*.apk
           name: TermiX-Pro ${{ github.ref_name }}

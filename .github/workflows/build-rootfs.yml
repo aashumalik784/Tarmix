@@ -31,7 +31,7 @@ jobs:
           zstd -19 -T0 termix-rootfs.tar -o termix-pro-rootfs-arm64.tar.zst
 
       - name: Upload to Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: rootfs-v1
           name: "TermiX-Pro Pre-Built Rootfs v1"
